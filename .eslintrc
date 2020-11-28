@@ -1,7 +1,6 @@
 {
     "extends": "airbnb",
     "rules": {
-        "emitWarning": 1,
         "react/jsx-filename-extension": [
           1,
           {
