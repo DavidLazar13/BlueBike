@@ -19,15 +19,15 @@ list-style: none;
 `;
 
 export const NavLink = styled(Link)`
-color: 555555;
+color: #555555;
 font-family: 'Archivo', sans-serif;
 font-weight: 400;
 font-size: 12px;
 line-height: 13px;
 letter-spacing: 6px;
 text-decoration: none;
-&:hover, :active, :visited {
-  text-decoration: none;
+&:hover {
+  text-decoration: underline;
 }
 `;
 

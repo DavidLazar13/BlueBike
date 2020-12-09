@@ -10,7 +10,7 @@ const theme = {
   pula: 'este',
 };
 
-const animatedColVariants = {
+const animateVariant1 = {
   in: {
     x: '100vw',
   },
@@ -26,6 +26,24 @@ const animatedColVariants = {
     x: '100vw',
   },
 };
+
+const animateVariant2 = {
+  in: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren',
+      ease: 'easeIn',
+      duration: 0.3,
+    },
+  },
+  exit: {
+    opacity: 0,
+  },
+};
+
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -58,7 +76,7 @@ function Layout(props) {
         </NavigationCell>
 
         {/* Asta e cam tiganeala da nu prea vad cum sa facem altfel. */}
-        {projectsNavigationActive && (
+        {projectsNavigationActive ? (
           <Cell width={2}>
             <AnimatePresence exitBeforeEnter>
               <AnimatedCol
@@ -66,22 +84,25 @@ function Layout(props) {
                 initial="in"
                 animate="animate"
                 exit="exit"
-                variants={animatedColVariants}
+                variants={animateVariant2}
               >
                 <ProjectsNavigation data={data} />
               </AnimatedCol>
             </AnimatePresence>
           </Cell>
+        ) : (
+          <Cell width={2}>
+          </Cell>
         )}
 
-        <Cell>
+        <Cell width={10}>
           <AnimatePresence exitBeforeEnter>
             <AnimatedCol
               key={location.pathname}
               initial="in"
               animate="animate"
               exit="exit"
-              variants={animatedColVariants}
+              variants={animateVariant2}
             >
               {children}
             </AnimatedCol>

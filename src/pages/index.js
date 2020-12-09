@@ -14,12 +14,6 @@ query data {
         }
         title
         slug
-        gallery {
-          id
-          sizes {
-            src
-          }
-        }
       }
     }
   }
