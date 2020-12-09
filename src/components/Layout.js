@@ -66,7 +66,8 @@ function Layout(props) {
   const {
     children, location, data,
   } = props;
-  const projectsNavigationActive = location.pathname.indexOf('projects') !== -1;
+  const projectsNavigationActive = location.pathname.indexOf('projects') === 1;
+  // const contactNavigationActive = location.pathname.indexOf('contact') === 1;
 
   return (
     <Wrapper>

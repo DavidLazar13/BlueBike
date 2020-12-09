@@ -18,7 +18,7 @@ export const NavItem = styled.li`
 list-style: none;
 `;
 
-export const NavLink = styled(Link)`
+const NavLink = styled(Link)`
 color: #555555;
 font-family: 'Archivo', sans-serif;
 font-weight: 400;
