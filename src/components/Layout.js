@@ -46,9 +46,8 @@ const NavigationCell = styled(Cell)`
 
 function Layout(props) {
   const {
-    children, location,
+    children, location, data,
   } = props;
-
   const projectsNavigationActive = location.pathname.indexOf('projects') !== -1;
 
   return (
@@ -69,7 +68,7 @@ function Layout(props) {
                 exit="exit"
                 variants={animatedColVariants}
               >
-                <ProjectsNavigation />
+                <ProjectsNavigation data={data} />
               </AnimatedCol>
             </AnimatePresence>
           </Cell>

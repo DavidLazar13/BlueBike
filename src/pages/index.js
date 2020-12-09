@@ -29,7 +29,7 @@ query data {
 function Home(props) {
   return (
     <>
-      <p>home</p>
+
     </>
   );
 }

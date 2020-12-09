@@ -3,10 +3,10 @@ import { graphql, Link } from 'gatsby';
 import { Cell, Grid } from 'styled-css-grid';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
+import { useLocation } from '@reach/router';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 import ProjectsNavigation from '../components/ProjectsNavigation';
-import { useLocation } from '@reach/router';
 
 export const pageQuery = graphql`
 query projectData($id: String!) {
@@ -19,14 +19,15 @@ query projectData($id: String!) {
 `;
 
 function Project({ data }) {
+  console.log(data);
   const { contentfulProject } = data;
   const location = useLocation();
   return (
     <>
       <Grid columns={1}>
-        {/*<Cell>*/}
-        {/*  /!*<ProjectsNavigation location={location} />*!/*/}
-        {/*</Cell>*/}
+        {/* <Cell> */}
+        {/*  /!*<ProjectsNavigation location={location} />*!/ */}
+        {/* </Cell> */}
         <Cell>
           <p>{contentfulProject.title}</p>
         </Cell>
