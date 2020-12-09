@@ -38,6 +38,12 @@ const AnimatedCol = styled(motion.div)`
   position: relative;
 `;
 
+const NavigationCell = styled(Cell)`
+  /* align-items: center;
+  justify-content: center;
+  display: flex; */
+`;
+
 function Layout(props) {
   const {
     children, location,
@@ -47,14 +53,14 @@ function Layout(props) {
 
   return (
     <Wrapper>
-      <Grid columns={projectsNavigationActive ? 3 : 2}>
-        <Cell>
+      <Grid columns={projectsNavigationActive ? 15 : 15}>
+        <NavigationCell left={2} width={2}>
           <Navigation />
-        </Cell>
+        </NavigationCell>
 
         {/* Asta e cam tiganeala da nu prea vad cum sa facem altfel. */}
         {projectsNavigationActive && (
-          <Cell>
+          <Cell width={2}>
             <AnimatePresence exitBeforeEnter>
               <AnimatedCol
                 key="projects"

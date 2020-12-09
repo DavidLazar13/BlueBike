@@ -1,20 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { NavLink, NavItem } from './Navigation';
+
+export const pageQuery = graphql`
+query projectData($id: String!) {
+    contentfulProject(id: {eq: $id}) {
+        id
+        slug
+        title
+      }
+}
+`;
 
 const Wrapper = styled.div`
-  background: azure;
+margin-top: 138px;
 `;
-function ProjectsNavigation({ location }) {
+
+function ProjectsNavigation({ data }) {
+  const { contentfulProject } = data;
   return (
     <Wrapper>
       <ul>
-        <li>
-          <Link to="/projects/bluebike">Project 1</Link>
-        </li>
-        <li>
-          <Link to="/projects/ciupiicii">Project 2</Link>
-        </li>
+        <NavItem>
+          <NavLink to="/projects/bluebike">GARDEN</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/projects/ciupiicii">KUDOS</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/projects/bluebike">POARTA 1</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/projects/ciupiicii">PRIMO</NavLink>
+        </NavItem>
       </ul>
     </Wrapper>
   );
