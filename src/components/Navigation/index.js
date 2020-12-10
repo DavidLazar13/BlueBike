@@ -36,6 +36,7 @@ function Navigation() {
     <NavWrapper>
       <NavList>
         <NavItem>
+          {/* Asta asa ca good practice, daca textu tre sa fie all caps mai bine il transformi din css cu text-transform */}
           <NavLink to="/">BLUE BIKE</NavLink>
         </NavItem>
         <NavItem>

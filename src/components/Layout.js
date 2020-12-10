@@ -4,6 +4,7 @@ import { Grid, Cell } from 'styled-css-grid';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navigation from './Navigation';
 import ProjectsNavigation from './ProjectsNavigation';
+// Aici ai putea sa dai import la index.css si sa se aplice peste tot
 
 const theme = {
   color: 'black',

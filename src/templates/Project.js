@@ -35,10 +35,12 @@ function Project({ data }) {
   return (
     <>
       <Grid columns={1}>
+        {/* Creca mergea mai bine ProjectsNavigation-u aici decat in layout */}
         {/* <Cell> */}
         {/*  /!*<ProjectsNavigation location={location} />*!/ */}
         {/* </Cell> */}
         <Cell>
+          {/* Sa ne uitam aici cum se foloseste cacatu ala de gatsby-image */}
           <Image src={contentfulProject.thumbnail.sizes.src} />
         </Cell>
       </Grid>

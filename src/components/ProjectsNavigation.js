@@ -21,6 +21,8 @@ text-decoration: none;
 `;
 
 function ProjectsNavigation({ data }) {
+  // useStaticQuery
+  // Extras query graphql in constanta afara (https://www.gatsbyjs.com/docs/use-static-query/)
   return (
     <StaticQuery
       query={graphql`
