@@ -7,7 +7,6 @@ function Projects(props) {
     <>
       <Grid columns={1}>
         <Cell>
-          {/* Sau aici Projects Navigation, nuj sigur */}
         </Cell>
       </Grid>
     </>

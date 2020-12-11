@@ -4,6 +4,7 @@ import { Cell, Grid } from 'styled-css-grid';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useLocation } from '@reach/router';
+import Img from 'gatsby-image';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 import ProjectsNavigation from '../components/ProjectsNavigation';
@@ -15,18 +16,17 @@ query projectData($id: String!) {
       slug
       title
       thumbnail {
-        sizes {
-          src
+        fluid {
+        ...GatsbyContentfulFluid
+        }
+      }
+      gallery {
+        fluid {
+        ...GatsbyContentfulFluid
         }
       }
       }
 }
-`;
-
-const Image = styled.img`
-width: 100%;
-height: 100%;
-overflow: auto;
 `;
 
 function Project({ data }) {
@@ -41,7 +41,7 @@ function Project({ data }) {
         {/* </Cell> */}
         <Cell>
           {/* Sa ne uitam aici cum se foloseste cacatu ala de gatsby-image */}
-          <Image src={contentfulProject.thumbnail.sizes.src} />
+          <Img fluid={contentfulProject.thumbnail.fluid} />
         </Cell>
       </Grid>
     </>

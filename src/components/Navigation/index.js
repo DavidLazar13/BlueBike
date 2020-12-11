@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-// import Link from '../CustomLink';
 import { Link } from 'gatsby';
 
 const NavWrapper = styled.div`
-margin-top: 96px;
 align-items: center;
-justify-content: center;
+justify-content: left;
 display: flex;
 `;
 
-const NavList = styled.ul`
+export const NavList = styled.ul`
 padding: 0px;
 `;
 
@@ -19,7 +17,8 @@ list-style: none;
 `;
 
 const NavLink = styled(Link)`
-color: #555555;
+text-transform: capitalize;
+color: ${({ theme }) => theme.colors.primary};
 font-family: 'Archivo', sans-serif;
 font-weight: 400;
 font-size: 12px;
@@ -36,8 +35,11 @@ function Navigation() {
     <NavWrapper>
       <NavList>
         <NavItem>
-          {/* Asta asa ca good practice, daca textu tre sa fie all caps mai bine il transformi din css cu text-transform */}
-          <NavLink to="/">BLUE BIKE</NavLink>
+          <NavLink to="/">
+            {/* <div>
+              <img src="./blue-bike.svg" />
+            </div> */}
+          </NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/projects">PROJECTS</NavLink>

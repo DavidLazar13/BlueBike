@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StaticQuery, graphql, Link } from 'gatsby';
-import { NavLink, NavItem } from './Navigation';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import { NavList, NavItem } from './Navigation';
 
 const Wrapper = styled.div`
-margin-top: 129px;
 `;
 
 const ProjectNavLink = styled(Link)`
-color: #C7C4C0;
-font-family: 'Archivo', sans-serif;
+color: ${({ theme }) => theme.colors.secondary};
+text-transform: uppercase;
 font-weight: 400;
 font-size: 12px;
 line-height: 13px;
@@ -20,36 +19,32 @@ text-decoration: none;
 }
 `;
 
-function ProjectsNavigation({ data }) {
-  // useStaticQuery
-  // Extras query graphql in constanta afara (https://www.gatsbyjs.com/docs/use-static-query/)
-  return (
-    <StaticQuery
-      query={graphql`
-    query data3 {
-      allContentfulProject {
-        edges {
-          node {
-            id
-            title
-            slug
-          }
-        }
+const NAV_QUERY = graphql`
+query NAV_QUERY {
+  allContentfulProject {
+    edges {
+      node {
+        id
+        title
+        slug
       }
     }
-    `}
-      render={data => (
-        <Wrapper>
-          <ul>
-            {data.allContentfulProject.edges.map(data => (
-              <NavItem key={data.node.id}>
-                <ProjectNavLink to={`/projects/${data.node.slug}`}>{data.node.title}</ProjectNavLink>
-              </NavItem>
-            ))}
-          </ul>
-        </Wrapper>
-      )}
-    />
+  }
+}
+`;
+
+function ProjectsNavigation() {
+  const data = useStaticQuery(NAV_QUERY);
+  return (
+    <Wrapper>
+      <NavList>
+        {data.allContentfulProject.edges.map(data => (
+          <NavItem key={data.node.id}>
+            <ProjectNavLink to={`/projects/${data.node.slug}`}>{data.node.title}</ProjectNavLink>
+          </NavItem>
+        ))}
+      </NavList>
+    </Wrapper>
   );
 }
 
