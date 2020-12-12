@@ -95,9 +95,9 @@ function Layout(props) {
             <AnimatePresence exitBeforeEnter="true">
               <AnimatedCol
                 key="index"
-                initial="false"
+                initial="in"
                 animate="animate"
-                exit="animate"
+                exit="exit"
                 variants={slideAnimation}
               >
                 <Div>
@@ -149,7 +149,7 @@ function Layout(props) {
                   exit="exit"
                   variants={fadeAnimation}
                 >
-                  <p>plm</p>
+                  <p></p>
                 </AnimatedCol>
               </AnimatePresence>
             </Cell>
