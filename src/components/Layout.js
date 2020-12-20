@@ -65,7 +65,7 @@ const AnimatedCol = styled(motion.div)`
 `;
 
 const NavigationCell = styled(Cell)`
-
+margin-top: 96px;
 `;
 
 const Image = styled.img`
@@ -92,12 +92,12 @@ function Layout(props) {
       <Wrapper>
         <Grid columns={12}>
           <NavigationCell width={isSecondColumnActive ? 2 : 4}>
-            <AnimatePresence exitBeforeEnter="true">
+            {/* <AnimatePresence exitBeforeEnter="true">
               <AnimatedCol
                 key="index"
-                initial="false"
+                initial="in"
                 animate="animate"
-                exit="animate"
+                exit="exit"
                 variants={slideAnimation}
               >
                 <Div>
@@ -106,7 +106,7 @@ function Layout(props) {
                   </Link>
                 </Div>
               </AnimatedCol>
-            </AnimatePresence>
+            </AnimatePresence> */}
             <Navigation />
           </NavigationCell>
 
@@ -149,7 +149,7 @@ function Layout(props) {
                   exit="exit"
                   variants={fadeAnimation}
                 >
-                  <p>plm</p>
+                  <p></p>
                 </AnimatedCol>
               </AnimatePresence>
             </Cell>
