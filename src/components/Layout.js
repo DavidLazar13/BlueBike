@@ -74,6 +74,10 @@ const AnimatedCol = styled(motion.div)`
   position: relative;
 `;
 
+const ContentCol = styled(motion.div)`
+  height: 100%;
+`;
+
 const NavigationCell = styled(Col)`
   padding: 96px 0 56px 0;
 
@@ -169,7 +173,7 @@ function Layout(props) {
           {/* Content Column */}
           <Col>
             <AnimatePresence exitBeforeEnter>
-              <AnimatedCol
+              <ContentCol
                 key={location.pathname}
                 initial="in"
                 animate="animate"
@@ -177,7 +181,7 @@ function Layout(props) {
                 variants={fadeAnimation}
               >
                 {children}
-              </AnimatedCol>
+              </ContentCol>
             </AnimatePresence>
           </Col>
         </GridWrapper>
