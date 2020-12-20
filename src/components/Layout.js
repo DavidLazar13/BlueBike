@@ -6,17 +6,8 @@ import { Link } from 'gatsby';
 import Navigation from './Navigation';
 import ProjectsNavigation from './ProjectsNavigation';
 import '../style.css';
-
-const theme = {
-  colors: {
-    primary: '#555555',
-    secondary: '#C7C4C0',
-  },
-  assets: {
-    mainLogo: './blue-bike.svg',
-    secondaryLogo: './&.svg',
-  },
-};
+import theme from '../theme';
+import ContactComponent from "./Contact";
 
 const slideAnimation = {
   in: {
@@ -121,7 +112,7 @@ function Layout(props) {
                   variants={slideAnimation}
                 >
                   <Div>
-                    <Image src="./&.svg" />
+                    <Image src="/&.svg" />
                   </Div>
                 </AnimatedCol>
               </AnimatePresence>
@@ -149,7 +140,7 @@ function Layout(props) {
                   exit="exit"
                   variants={fadeAnimation}
                 >
-                  <p></p>
+                  <ContactComponent/>
                 </AnimatedCol>
               </AnimatePresence>
             </Cell>

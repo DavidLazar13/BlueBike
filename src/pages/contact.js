@@ -1,5 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { graphql } from 'gatsby';
+
+export const CONTACT_QUERY = graphql`
+query CONTACT_QUERY {
+  contentfulContact {
+    adress
+    phone
+    eMail
+  }
+}
+`
 
 const Adress = styled.p`
 color: ${({ theme }) => theme.colors.primary};
@@ -17,12 +28,13 @@ line-height: 13px;
 letter-spacing: 6px;
 `;
 
-function Contact({ location }) {
+function Contact({data} ) {
+    const {contentfulContact} = data;
   return (
     <>
-      <Adress>Bulevardul Elisabeta 2b, Constanta</Adress>
-      <Adress>contact@bulebike.ro</Adress>
-      <Phone>+40 729 xxx xxx</Phone>
+      <Adress>{contentfulContact.adress}</Adress>
+      <Adress>{contentfulContact.eMail}</Adress>
+      <Phone>{contentfulContact.phone}</Phone>
     </>
   );
 }
