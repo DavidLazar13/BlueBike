@@ -36,9 +36,7 @@ function Navigation() {
       <NavList>
         <NavItem>
           <NavLink to="/">
-            {/* <div>
-              <img src="./blue-bike.svg" />
-            </div> */}
+            <img src="./blue-bike.svg" />
           </NavLink>
         </NavItem>
         <NavItem>
