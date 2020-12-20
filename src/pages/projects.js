@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { Cell, Grid } from 'styled-css-grid';
 
 function Projects(props) {
@@ -6,7 +7,6 @@ function Projects(props) {
     <>
       <Grid columns={1}>
         <Cell>
-          <p>Projects slideshow</p>
         </Cell>
       </Grid>
     </>

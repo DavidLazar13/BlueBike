@@ -1,27 +1,51 @@
 import React from 'react';
 import styled from 'styled-components';
-// import Link from '../CustomLink';
 import { Link } from 'gatsby';
-const NavWrapper = styled.div`
 
+const NavWrapper = styled.div`
+align-items: center;
+justify-content: left;
+display: flex;
 `;
 
-const NavList = styled.ul``;
+export const NavList = styled.ul`
+padding: 0px;
+`;
 
-const NavItem = styled.li``;
+export const NavItem = styled.li`
+list-style: none;
+`;
+
+const NavLink = styled(Link)`
+text-transform: capitalize;
+color: ${({ theme }) => theme.colors.primary};
+font-family: 'Archivo', sans-serif;
+font-weight: 400;
+font-size: 12px;
+line-height: 13px;
+letter-spacing: 6px;
+text-decoration: none;
+&:hover {
+  text-decoration: underline;
+}
+`;
 
 function Navigation() {
   return (
     <NavWrapper>
       <NavList>
         <NavItem>
-          <Link to="/">Home</Link>
+          <NavLink to="/">
+            {/* <div>
+              <img src="./blue-bike.svg" />
+            </div> */}
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/projects">Projects</Link>
+          <NavLink to="/projects">PROJECTS</NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/contact">Contact</Link>
+          <NavLink to="/contact">CONTACT</NavLink>
         </NavItem>
       </NavList>
     </NavWrapper>

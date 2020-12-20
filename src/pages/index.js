@@ -14,12 +14,6 @@ query data {
         }
         title
         slug
-        gallery {
-          id
-          sizes {
-            src
-          }
-        }
       }
     }
   }
@@ -29,7 +23,7 @@ query data {
 function Home(props) {
   return (
     <>
-      <p>home</p>
+      <p>Caca</p>
     </>
   );
 }

@@ -3,17 +3,28 @@ import { graphql, Link } from 'gatsby';
 import { Cell, Grid } from 'styled-css-grid';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
+import { useLocation } from '@reach/router';
+import Img from 'gatsby-image';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 import ProjectsNavigation from '../components/ProjectsNavigation';
-import { useLocation } from '@reach/router';
 
 export const pageQuery = graphql`
 query projectData($id: String!) {
     contentfulProject(id: {eq: $id}) {
-        id
-        slug
-        title
+      id
+      slug
+      title
+      thumbnail {
+        fluid {
+        ...GatsbyContentfulFluid
+        }
+      }
+      gallery {
+        fluid {
+        ...GatsbyContentfulFluid
+        }
+      }
       }
 }
 `;
@@ -24,11 +35,13 @@ function Project({ data }) {
   return (
     <>
       <Grid columns={1}>
-        {/*<Cell>*/}
-        {/*  /!*<ProjectsNavigation location={location} />*!/*/}
-        {/*</Cell>*/}
+        {/* Creca mergea mai bine ProjectsNavigation-u aici decat in layout */}
+        {/* <Cell> */}
+        {/*  /!*<ProjectsNavigation location={location} />*!/ */}
+        {/* </Cell> */}
         <Cell>
-          <p>{contentfulProject.title}</p>
+          {/* Sa ne uitam aici cum se foloseste cacatu ala de gatsby-image */}
+          <Img fluid={contentfulProject.thumbnail.fluid} />
         </Cell>
       </Grid>
     </>
