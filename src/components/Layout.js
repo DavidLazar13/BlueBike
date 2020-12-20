@@ -51,12 +51,27 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
+const GridWrapper = styled.div`
+  height: 100%;
+  display: grid;
+  grid-template-columns: 165px 150px auto;
+`;
+
+const Col = styled.div`
+
+`;
+
 const AnimatedCol = styled(motion.div)`
   position: relative;
 `;
 
-const NavigationCell = styled(Cell)`
-margin-top: 96px;
+const ContentCol = styled(motion.div)`
+  height: 100%;
+`;
+
+const NavigationCell = styled(Col)`
+  padding: 96px 0 56px 0;
+
 `;
 
 const Image = styled.img`
@@ -64,7 +79,6 @@ const Image = styled.img`
 `;
 
 const Div = styled.div`
-margin-top: 96px;
 align-items: center;
 justify-content: left;
 display: flex;
@@ -81,8 +95,9 @@ function Layout(props) {
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
-        <Grid columns={12}>
-          <NavigationCell width={isSecondColumnActive ? 2 : 4}>
+        <GridWrapper>
+          {/* Main Nav Column */}
+          <NavigationCell>
             {/* <AnimatePresence exitBeforeEnter="true">
               <AnimatedCol
                 key="index"
@@ -101,8 +116,9 @@ function Layout(props) {
             <Navigation />
           </NavigationCell>
 
+          {/* Projects Column */}
           {projectsNavigationActive && (
-            <Cell width={2}>
+            <NavigationCell>
               <AnimatePresence exitBeforeEnter>
                 <AnimatedCol
                   key="projects"
@@ -127,11 +143,11 @@ function Layout(props) {
                   <ProjectsNavigation />
                 </AnimatedCol>
               </AnimatePresence>
-            </Cell>
+            </NavigationCell>
           )}
-
+          {/* Contact Column */}
           {contactNavigationActive && (
-            <Cell width={2}>
+            <NavigationCell>
               <AnimatePresence exitBeforeEnter>
                 <AnimatedCol
                   key="projects"
@@ -143,12 +159,12 @@ function Layout(props) {
                   <ContactComponent/>
                 </AnimatedCol>
               </AnimatePresence>
-            </Cell>
+            </NavigationCell>
           )}
-
-          <Cell width={8}>
+          {/* Content Column */}
+          <Col>
             <AnimatePresence exitBeforeEnter>
-              <AnimatedCol
+              <ContentCol
                 key={location.pathname}
                 initial="in"
                 animate="animate"
@@ -156,10 +172,10 @@ function Layout(props) {
                 variants={fadeAnimation}
               >
                 {children}
-              </AnimatedCol>
+              </ContentCol>
             </AnimatePresence>
-          </Cell>
-        </Grid>
+          </Col>
+        </GridWrapper>
       </Wrapper>
     </ThemeProvider>
   );

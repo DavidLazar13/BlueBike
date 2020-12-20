@@ -27,20 +27,24 @@ query projectData($id: String!) {
 }
 `;
 
+const Wrapper = styled.div`
+  max-height: 100vh;
+`;
+
 function Project({ data }) {
   const { contentfulProject } = data;
   const location = useLocation();
+  const isLandscape = contentfulProject.thumbnail.fluid.aspectRatio > 1;
   return (
-    <>
-      <Grid columns={1}>
-        <Cell>
-          <Img fluid={contentfulProject.thumbnail.fluid} />
 
-        </Cell>
-      </Grid>
-    </>
+    <Wrapper>
+      <Img
+        imgStyle={{ objectPosition: '50% 50%', maxHeight: '100vh', objectFit: isLandscape ? 'cover' : 'contain' }}
+        fluid={contentfulProject.thumbnail.fluid}
+      />
+    </Wrapper>
+
   );
 }
-
 
 export default Project;

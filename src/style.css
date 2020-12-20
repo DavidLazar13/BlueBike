@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
 
-html, body {
+html,
+body {
   margin: 0px;
   padding: 0px;
-  padding-left: 70px;
-  width: calc(100% -70px);
+  padding-left: 40px;
   height: 100%;
 }
 
 body {
-    font-family: 'Archivo', sans-serif;
-  }
+  font-family: 'Archivo', sans-serif;
+}
 
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}

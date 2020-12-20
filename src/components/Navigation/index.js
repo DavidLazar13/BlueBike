@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 const NavWrapper = styled.div`
-align-items: center;
-justify-content: left;
+height: 100%;
+align-items: left;
+justify-content: space-between;
 display: flex;
+flex-direction: column;
 `;
 
 export const NavList = styled.ul`
 padding: 0px;
+margin: 0px;
 `;
 
 export const NavItem = styled.li`
@@ -42,6 +45,9 @@ function Navigation() {
         <NavItem>
           <NavLink to="/projects">PROJECTS</NavLink>
         </NavItem>
+
+      </NavList>
+      <NavList>
         <NavItem>
           <NavLink to="/contact">CONTACT</NavLink>
         </NavItem>
