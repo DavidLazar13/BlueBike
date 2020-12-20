@@ -149,7 +149,7 @@ function Layout(props) {
           {contactNavigationActive && (
             <NavigationCell>
               <AnimatePresence exitBeforeEnter>
-                <AnimatedCol
+                <ContentCol
                   key="projects"
                   initial="in"
                   animate="animate"
@@ -157,7 +157,7 @@ function Layout(props) {
                   variants={fadeAnimation}
                 >
                   <ContactComponent/>
-                </AnimatedCol>
+                </ContentCol>
               </AnimatePresence>
             </NavigationCell>
           )}

@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { graphql } from 'gatsby';
 
-const Wraper = styled.div`
+const Wrapper = styled.div`
   max-height: 100vh ;
   height: 100%;
   display: flex;
@@ -11,20 +11,18 @@ const Wraper = styled.div`
   box-sizing: border-box;
 `;
 
-const Adress = styled.p`
-color: ${({ theme }) => theme.colors.primary};
-font-weight: 400;
-font-size: 12px;
-line-height: 13px;
-letter-spacing: 1.2px;
-`;
-
-const Phone = styled.p`
-color: ${({ theme }) => theme.colors.primary};
-font-weight: 400;
-font-size: 12px;
-line-height: 13px;
-letter-spacing: 6px;
+const Paragraph = styled.p`
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: 1.2px;
+  &:last-of-type {
+    margin-bottom: 0px;
+  }
+  ${({wide}) => wide && css`
+    letter-spacing: 6px;
+  `}
 `;
 
 export const CONTACT_QUERY = graphql`
@@ -40,13 +38,13 @@ query CONTACT_QUERY {
 function Contact({ data }) {
     const {contentfulContact} = data;
   return (
-    <Wraper>
+    <Wrapper>
       <div>
-        <Adress>{contentfulContact.adress}</Adress>
-        <Adress>{contentfulContact.eMail}</Adress>
-        <Phone>{contentfulContact.phone}</Phone>
+        <Paragraph>{contentfulContact.adress}</Paragraph>
+        <Paragraph>{contentfulContact.eMail}</Paragraph>
+        <Paragraph wide>{contentfulContact.phone}</Paragraph>
       </div>
-    </Wraper>
+    </Wrapper>
   );
 }
 
