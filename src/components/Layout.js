@@ -66,24 +66,11 @@ function Layout(props) {
         <GridWrapper>
           {/* Main Nav Column */}
           <NavigationCell>
-            {/* <AnimatePresence exitBeforeEnter="true">
-              <AnimatedCol
-                key="index"
-                initial="in"
-                animate="animate"
-                exit="exit"
-                variants={slideAnimation}
-              >
-                <Div>
-                  <Link to="/">
-                    <Image src="./blue-bike.svg" />
-                  </Link>
-                </Div>
-              </AnimatedCol>
-            </AnimatePresence> */}
             <Navigation />
           </NavigationCell>
-
+          {isSecondColumnActive || (
+              <NavigationCell/>
+          )}
           {/* Projects Column */}
           {projectsNavigationActive && (
             <NavigationCell>
