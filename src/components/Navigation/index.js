@@ -15,22 +15,47 @@ padding: 0px;
 margin: 0px;
 `;
 
-export const NavItem = styled.li`
+const NavItem = styled.li`
 list-style: none;
+  &:nth-of-type(2) {
+    padding-top: 20px;
+  }
 `;
 
 const NavLink = styled(Link)`
-text-transform: capitalize;
-color: ${({ theme }) => theme.colors.primary};
-font-family: 'Archivo', sans-serif;
-font-weight: 400;
-font-size: 12px;
-line-height: 13px;
-letter-spacing: 6px;
-text-decoration: none;
-&:hover {
-  text-decoration: underline;
-}
+  color: ${({ theme }) => theme.colors.primary}; 
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: 6px;
+  text-decoration: none;
+    &:after {
+      content: '';
+      background-color: ${({ theme }) => theme.colors.primary};
+      margin-top: 8px;
+      display: block;
+      position: absolute;
+      width: 5%;
+      height: 1px;
+      opacity: 0;
+      transition: 0.5s;
+      }
+    
+    &.active:after {
+      display: block;
+      opacity: 1;
+      }
+    
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+   
+      &:after {
+        display: block;
+        opacity: 1;
+        }
+      }
 `;
 
 function Navigation() {
@@ -38,9 +63,9 @@ function Navigation() {
     <NavWrapper>
       <NavList>
         <NavItem>
-          <NavLink to="/">
+          <Link to="/">
             <img src="/blue-bike.svg" />
-          </NavLink>
+          </Link>
         </NavItem>
         <NavItem>
           <NavLink to="/projects">PROJECTS</NavLink>

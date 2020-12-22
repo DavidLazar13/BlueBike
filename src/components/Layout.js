@@ -6,42 +6,9 @@ import { Link } from 'gatsby';
 import Navigation from './Navigation';
 import ProjectsNavigation from './ProjectsNavigation';
 import '../style.css';
-import theme from '../theme';
+import {theme, animations} from '../theme';
 import ContactComponent from "./Contact";
 
-const slideAnimation = {
-  in: {
-    x: '-100vw',
-  },
-  animate: {
-    x: '0vw',
-    transition: {
-      when: 'beforeChildren',
-      ease: 'easeOut',
-      duration: 0.5,
-    },
-  },
-  exit: {
-    x: '-100vw',
-  },
-};
-
-const fadeAnimation = {
-  in: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      when: 'beforeChildren',
-      ease: 'easeIn',
-      duration: 0.3,
-    },
-  },
-  exit: {
-    opacity: 0,
-  },
-};
 
 const Wrapper = styled.div`
   width: 100%;
@@ -52,6 +19,7 @@ const Wrapper = styled.div`
 `;
 
 const GridWrapper = styled.div`
+  background-color: ${({theme}) => theme.colors.background};
   height: 100%;
   display: grid;
   grid-template-columns: 165px 150px auto;
@@ -125,7 +93,7 @@ function Layout(props) {
                   initial="in"
                   animate="animate"
                   exit="exit"
-                  variants={slideAnimation}
+                  variants={animations.slideAnimation}
                 >
                   <Div>
                     <Image src="/&.svg" />
@@ -138,7 +106,7 @@ function Layout(props) {
                   initial="in"
                   animate="animate"
                   exit="exit"
-                  variants={fadeAnimation}
+                  variants={animations.fadeAnimation}
                 >
                   <ProjectsNavigation />
                 </AnimatedCol>
@@ -154,7 +122,7 @@ function Layout(props) {
                   initial="in"
                   animate="animate"
                   exit="exit"
-                  variants={fadeAnimation}
+                  variants={animations.fadeAnimation}
                 >
                   <ContactComponent/>
                 </ContentCol>
@@ -169,7 +137,7 @@ function Layout(props) {
                 initial="in"
                 animate="animate"
                 exit="exit"
-                variants={fadeAnimation}
+                variants={animations.fadeAnimation}
               >
                 {children}
               </ContentCol>
