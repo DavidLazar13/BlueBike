@@ -17,7 +17,7 @@ margin: 0px;
 
 const NavItem = styled.li`
 list-style: none;
-  &:nth-of-type(2) {
+  &:first-of-type {
     padding-top: 20px;
   }
 `;
@@ -62,11 +62,6 @@ function Navigation() {
   return (
     <NavWrapper>
       <NavList>
-        <NavItem>
-          <Link to="/">
-            <img src="/blue-bike.svg" />
-          </Link>
-        </NavItem>
         <NavItem>
           <NavLink to="/projects">PROJECTS</NavLink>
         </NavItem>

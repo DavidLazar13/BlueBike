@@ -39,7 +39,7 @@ const ContentCol = styled(motion.div)`
 
 const NavigationCell = styled(Col)`
   padding: 96px 0 56px 0;
-
+  
 `;
 
 const Image = styled.img`
@@ -66,9 +66,25 @@ function Layout(props) {
         <GridWrapper>
           {/* Main Nav Column */}
           <NavigationCell>
-            <Navigation />
+            <AnimatePresence exitBeforeEnter="true">
+              <AnimatedCol
+                key="index"
+                initial="in"
+                animate="animate"
+                exit="exit"
+                variants={animations.fadeAnimation}
+              >
+                <Div>
+                  <Link to="/">
+                    <Image src="/blue-bike.svg" />
+                  </Link>
+                </Div>
+              </AnimatedCol>
+              <Navigation />
+            </AnimatePresence>
+
           </NavigationCell>
-          {isSecondColumnActive || (
+          {!isSecondColumnActive && (
               <NavigationCell/>
           )}
           {/* Projects Column */}
