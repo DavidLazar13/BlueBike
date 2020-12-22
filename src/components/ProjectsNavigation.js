@@ -10,9 +10,6 @@ const ProjectNavItem = styled.li`
   padding-top: 8px;
   padding-bottom: 8px;
   list-style: none;
-  &:first-of-type {
-    padding-top: 23px;
-  }
 `;
 
 const ProjectNavLink = styled(Link)`

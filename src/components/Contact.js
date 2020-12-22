@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ContactItem = styled.p`
   color: ${({ theme }) => theme.colors.secondary};
@@ -8,9 +8,9 @@ const ContactItem = styled.p`
   font-size: 12px;
   line-height: 13px;
   letter-spacing: 6px;
-  &:last-of-type {
-    margin-bottom: 0px;
-  }
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 0;
 `;
 
 const Wrapper = styled.div`
@@ -25,15 +25,15 @@ const LabelWrapper = styled.div`
 `;
 
 function ContactComponent() {
-    return (
-        <Wrapper>
-            <LabelWrapper>
-                <ContactItem>ADRESA</ContactItem>
-                <ContactItem>E-MAIL</ContactItem>
-                <ContactItem>TELEFON</ContactItem>
-            </LabelWrapper>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <LabelWrapper>
+        <ContactItem>ADRESA</ContactItem>
+        <ContactItem>E-MAIL</ContactItem>
+        <ContactItem>TELEFON</ContactItem>
+      </LabelWrapper>
+    </Wrapper>
+  );
 }
 
 export default ContactComponent;

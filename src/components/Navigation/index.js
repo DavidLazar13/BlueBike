@@ -4,22 +4,21 @@ import { Link } from 'gatsby';
 
 const NavWrapper = styled.div`
 height: 100%;
-align-items: left;
+align-items: flex-start;
 justify-content: space-between;
 display: flex;
 flex-direction: column;
 `;
 
 export const NavList = styled.ul`
-padding: 0px;
-margin: 0px;
+padding: 12px 0 0 0;
+margin: 0;
 `;
 
 const NavItem = styled.li`
-list-style: none;
-  &:first-of-type {
-    padding-top: 20px;
-  }
+  list-style: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
 `;
 
 const NavLink = styled(Link)`

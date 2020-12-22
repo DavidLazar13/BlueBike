@@ -38,8 +38,9 @@ const ContentCol = styled(motion.div)`
 `;
 
 const NavigationCell = styled(Col)`
-  padding: 96px 0 56px 0;
-  
+  display: flex;
+  padding: 96px 0 48px 0;
+  flex-direction: column;
 `;
 
 const Image = styled.img`
@@ -50,6 +51,10 @@ const Div = styled.div`
 align-items: center;
 justify-content: left;
 display: flex;
+`;
+
+const SecondLogoWrapper = styled.div`
+  margin-bottom: 3px;
 `;
 
 function Layout(props) {
@@ -85,7 +90,7 @@ function Layout(props) {
 
           </NavigationCell>
           {!isSecondColumnActive && (
-              <NavigationCell/>
+            <NavigationCell />
           )}
           {/* Projects Column */}
           {projectsNavigationActive && (
@@ -98,9 +103,9 @@ function Layout(props) {
                   exit="exit"
                   variants={animations.slideAnimation}
                 >
-                  <Div>
+                  <SecondLogoWrapper>
                     <Image src="/&.svg" />
-                  </Div>
+                  </SecondLogoWrapper>
                 </AnimatedCol>
               </AnimatePresence>
               <AnimatePresence exitBeforeEnter>
