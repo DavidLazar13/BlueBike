@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: flex-end;
-  padding: 96px 0 56px 0;
+  padding: 96px 0 48px 0;
   box-sizing: border-box;
 `;
 
@@ -17,10 +17,10 @@ const Paragraph = styled.p`
   font-size: 12px;
   line-height: 13px;
   letter-spacing: 1.2px;
-  &:last-of-type {
-    margin-bottom: 0px;
-  }
-  ${({wide}) => wide && css`
+  margin: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  ${({ wide }) => wide && css`
     letter-spacing: 6px;
   `}
 `;
@@ -33,10 +33,10 @@ query CONTACT_QUERY {
     eMail
   }
 }
-`
+`;
 
 function Contact({ data }) {
-    const {contentfulContact} = data;
+  const { contentfulContact } = data;
   return (
     <Wrapper>
       <div>

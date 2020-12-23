@@ -4,33 +4,57 @@ import { Link } from 'gatsby';
 
 const NavWrapper = styled.div`
 height: 100%;
-align-items: left;
+align-items: flex-start;
 justify-content: space-between;
 display: flex;
 flex-direction: column;
 `;
 
 export const NavList = styled.ul`
-padding: 0px;
-margin: 0px;
+padding: 12px 0 0 0;
+margin: 0;
 `;
 
-export const NavItem = styled.li`
-list-style: none;
+const NavItem = styled.li`
+  list-style: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
 `;
 
 const NavLink = styled(Link)`
-text-transform: capitalize;
-color: ${({ theme }) => theme.colors.primary};
-font-family: 'Archivo', sans-serif;
-font-weight: 400;
-font-size: 12px;
-line-height: 13px;
-letter-spacing: 6px;
-text-decoration: none;
-&:hover {
-  text-decoration: underline;
-}
+  color: ${({ theme }) => theme.colors.primary}; 
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: 6px;
+  text-decoration: none;
+    &:after {
+      content: '';
+      background-color: ${({ theme }) => theme.colors.primary};
+      margin-top: 8px;
+      display: block;
+      position: absolute;
+      width: 5%;
+      height: 1px;
+      opacity: 0;
+      transition: 0.5s;
+      }
+    
+    &.active:after {
+      display: block;
+      opacity: 1;
+      }
+    
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+   
+      &:after {
+        display: block;
+        opacity: 1;
+        }
+      }
 `;
 
 function Navigation() {
@@ -38,14 +62,8 @@ function Navigation() {
     <NavWrapper>
       <NavList>
         <NavItem>
-          <NavLink to="/">
-            <img src="/blue-bike.svg" />
-          </NavLink>
-        </NavItem>
-        <NavItem>
           <NavLink to="/projects">PROJECTS</NavLink>
         </NavItem>
-
       </NavList>
       <NavList>
         <NavItem>

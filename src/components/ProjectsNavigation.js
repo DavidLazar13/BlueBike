@@ -1,9 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import { NavList, NavItem } from './Navigation';
+import { NavList } from './Navigation';
 
 const Wrapper = styled.div`
+`;
+
+const ProjectNavItem = styled.li`
+  padding-top: 8px;
+  padding-bottom: 8px;
+  list-style: none;
 `;
 
 const ProjectNavLink = styled(Link)`
@@ -14,9 +20,33 @@ font-size: 12px;
 line-height: 13px;
 letter-spacing: 6px;
 text-decoration: none;
-&:hover {
-  text-decoration: underline;
-}
+  
+  &:after {
+    content: '';
+    background-color: ${({ theme }) => theme.colors.secondary};
+    margin-top: 8px;
+    display: block;
+    position: absolute;
+    width: 30%;
+    height: 1px;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  &.active:after {
+    display: block;
+    opacity: 1;
+  }
+
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+
+    &:after {
+      display: block;
+      opacity: 1;
+    }
+  }
 `;
 
 const NAV_QUERY = graphql`
@@ -39,9 +69,9 @@ function ProjectsNavigation() {
     <Wrapper>
       <NavList>
         {data.allContentfulProject.edges.map(data => (
-          <NavItem key={data.node.id}>
+          <ProjectNavItem key={data.node.id}>
             <ProjectNavLink to={`/projects/${data.node.slug}`}>{data.node.title}</ProjectNavLink>
-          </NavItem>
+          </ProjectNavItem>
         ))}
       </NavList>
     </Wrapper>
