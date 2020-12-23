@@ -54,7 +54,6 @@ display: flex;
 `;
 
 const SecondLogoWrapper = styled.div`
-  margin-bottom: 3px;
 `;
 
 function Layout(props) {

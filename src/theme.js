@@ -33,7 +33,7 @@ export const animations = {
             transition: {
                 when: 'beforeChildren',
                 ease: 'easeIn',
-                duration: 0.3,
+                duration: 0.5,
             },
         },
         exit: {

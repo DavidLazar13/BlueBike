@@ -64,7 +64,6 @@ function Navigation() {
         <NavItem>
           <NavLink to="/projects">PROJECTS</NavLink>
         </NavItem>
-
       </NavList>
       <NavList>
         <NavItem>
