@@ -71,7 +71,7 @@ function Carousel({data}) {
                         }
                     }}
                 >
-                    <CarouselItem data={gallery[imageIndex]} key={gallery[imageIndex].id} />
+                    <CarouselItem data={gallery[imageIndex]} />
                 </AnimatedCarousel>
             </AnimatePresence>
         </>

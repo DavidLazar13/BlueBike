@@ -22,7 +22,7 @@ query projectData($id: String!) {
       gallery {
         id
         fluid {
-        ...GatsbyContentfulFluid
+        ...GatsbyContentfulFluid_tracedSVG
         }
       }
       }
