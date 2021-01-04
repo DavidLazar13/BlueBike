@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { wrap } from 'popmotion';
 import { useLocation } from '@reach/router';
 import Img from 'gatsby-image';
+import Carousel from "../components/Carousel/Carousel";
 
 export const pageQuery = graphql`
 query projectData($id: String!) {
@@ -19,6 +20,7 @@ query projectData($id: String!) {
         }
       }
       gallery {
+        id
         fluid {
         ...GatsbyContentfulFluid
         }
@@ -38,10 +40,11 @@ function Project({ data }) {
   return (
 
     <Wrapper>
-      <Img
-        imgStyle={{ objectPosition: '50% 50%', maxHeight: '100vh', objectFit: isLandscape ? 'cover' : 'contain' }}
-        fluid={contentfulProject.thumbnail.fluid}
-      />
+      {/*<Img*/}
+      {/*  imgStyle={{ objectPosition: '50% 50%', maxHeight: '100vh', objectFit: isLandscape ? 'cover' : 'contain' }}*/}
+      {/*  fluid={contentfulProject.thumbnail.fluid}*/}
+      {/*/>*/}
+      <Carousel data={contentfulProject}/>
     </Wrapper>
 
   );

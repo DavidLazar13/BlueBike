@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { Grid, Cell } from 'styled-css-grid';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import Navigation from './Navigation';
@@ -70,7 +69,7 @@ function Layout(props) {
         <GridWrapper>
           {/* Main Nav Column */}
           <NavigationCell>
-            <AnimatePresence exitBeforeEnter="true">
+            <AnimatePresence exitBeforeEnter={false}>
               <AnimatedCol
                 key="index"
                 initial="in"
@@ -94,7 +93,7 @@ function Layout(props) {
           {/* Projects Column */}
           {projectsNavigationActive && (
             <NavigationCell>
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence exitBeforeEnter={false}>
                 <AnimatedCol
                   key="projects"
                   initial="in"
@@ -107,7 +106,7 @@ function Layout(props) {
                   </SecondLogoWrapper>
                 </AnimatedCol>
               </AnimatePresence>
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence exitBeforeEnter={false}>
                 <AnimatedCol
                   key="projects"
                   initial="in"
