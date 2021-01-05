@@ -5,9 +5,8 @@ import { Link } from 'gatsby';
 import Navigation from './Navigation';
 import ProjectsNavigation from './ProjectsNavigation';
 import '../style.css';
-import {theme, animations} from '../theme';
-import ContactComponent from "./Contact";
-
+import { theme, animations } from '../theme';
+import ContactComponent from './Contact';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,7 +17,7 @@ const Wrapper = styled.div`
 `;
 
 const GridWrapper = styled.div`
-  background-color: ${({theme}) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.background};
   height: 100%;
   display: grid;
   grid-template-columns: 165px 150px auto;
@@ -34,6 +33,7 @@ const AnimatedCol = styled(motion.div)`
 
 const ContentCol = styled(motion.div)`
   height: 100%;
+  max-height: 100vh;
 `;
 
 const NavigationCell = styled(Col)`
@@ -47,7 +47,6 @@ const ProjectsCell = styled(Col)`
   padding: 96px 0 48px 0;
   flex-direction: column;
 `;
-
 
 const Image = styled.img`
 
@@ -137,7 +136,7 @@ function Layout(props) {
                   exit="exit"
                   variants={animations.fadeAnimation}
                 >
-                  <ContactComponent/>
+                  <ContactComponent />
                 </ContentCol>
               </AnimatePresence>
             </NavigationCell>
