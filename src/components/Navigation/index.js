@@ -32,6 +32,7 @@ const NavLink = styled(Link)`
     &:after {
       content: '';
       background-color: ${({ theme }) => theme.colors.primary};
+      pointer-events: none;
       margin-top: 8px;
       display: block;
       position: absolute;
@@ -40,6 +41,8 @@ const NavLink = styled(Link)`
       opacity: 0;
       transition: 0.5s;
       }
+    
+  
     
     &.active:after {
       display: block;
@@ -62,12 +65,12 @@ function Navigation() {
     <NavWrapper>
       <NavList>
         <NavItem>
-          <NavLink to="/projects">PROJECTS</NavLink>
+          <NavLink activeClassName="active" to="/projects">PROJECTS</NavLink>
         </NavItem>
       </NavList>
       <NavList>
         <NavItem>
-          <NavLink to="/contact">CONTACT</NavLink>
+          <NavLink activeClassName="active" to="/contact">CONTACT</NavLink>
         </NavItem>
       </NavList>
     </NavWrapper>

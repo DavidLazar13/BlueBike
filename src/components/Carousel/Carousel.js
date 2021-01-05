@@ -1,13 +1,14 @@
 import * as React from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { wrap } from "popmotion";
-import { images } from "./image-data";
+import { wrap } from "@popmotion/popcorn";
+import CarouselItem from './CarouselItem';
+import styled from "styled-components";
 
 const variants = {
     enter: (direction) => {
         return {
-            x: direction > 0 ? 1000 : -1000,
+            x: direction > 0 ? 1 : -1,
             opacity: 0
         };
     },
@@ -19,7 +20,7 @@ const variants = {
     exit: (direction) => {
         return {
             zIndex: 0,
-            x: direction < 0 ? 1000 : -1000,
+            x: direction < 0 ? 1 : -1,
             opacity: 0
         };
     }
@@ -30,19 +31,38 @@ const swipePower = (offset, velocity) => {
     return Math.abs(offset) * velocity;
 };
 
-export const Example = () => {
+const AnimatedCarousel = styled(motion.div)`
+  height: 100%;
+  width: 100%;
+`;
+
+const CarouselWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const PageButton = styled.div`
+`;
+
+function Carousel({data}) {
+    const {gallery} = data;
     const [[page, direction], setPage] = useState([0, 0]);
-    const imageIndex = wrap(0, images.length, page);
+    const imageIndex = wrap(0, gallery.length, page);
     const paginate = (newDirection) => {
         setPage([page + newDirection, newDirection]);
     };
 
     return (
-        <>
-            <AnimatePresence initial={false} custom={direction}>
-                <motion.img
+        <CarouselWrapper>
+            {/*<PageButton className="prev" onClick={() => paginate(-1)}>*/}
+            {/*    {"<"}*/}
+            {/*</PageButton>*/}
+            <AnimatePresence initial={false} custom={direction} exitBeforeEnter={true}>
+                <AnimatedCarousel
                     key={page}
-                    src={images[imageIndex]}
                     custom={direction}
                     variants={variants}
                     initial="enter"
@@ -54,7 +74,7 @@ export const Example = () => {
                     }}
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={1}
+                    dragElastic={0.1}
                     onDragEnd={(e, { offset, velocity }) => {
                         const swipe = swipePower(offset.x, velocity.x);
 
@@ -64,16 +84,15 @@ export const Example = () => {
                             paginate(-1);
                         }
                     }}
-                />
+                >
+                    <CarouselItem data={gallery[imageIndex]} />
+                </AnimatedCarousel>
             </AnimatePresence>
-            <div className="next" onClick={() => paginate(1)}>
-                {"‣"}
-            </div>
-            <div className="prev" onClick={() => paginate(-1)}>
-                {"‣"}
-            </div>
-        </>
+            {/*<PageButton className="next" onClick={() => paginate(1)}>*/}
+            {/*    {">"}*/}
+            {/*</PageButton>*/}
+        </CarouselWrapper>
     );
-};
+}
 
-export default;
+export default Carousel;

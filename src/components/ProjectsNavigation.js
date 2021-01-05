@@ -24,6 +24,7 @@ text-decoration: none;
   &:after {
     content: '';
     background-color: ${({ theme }) => theme.colors.secondary};
+    pointer-events: none;
     margin-top: 8px;
     display: block;
     position: absolute;
@@ -70,7 +71,7 @@ function ProjectsNavigation() {
       <NavList>
         {data.allContentfulProject.edges.map(data => (
           <ProjectNavItem key={data.node.id}>
-            <ProjectNavLink to={`/projects/${data.node.slug}`}>{data.node.title}</ProjectNavLink>
+            <ProjectNavLink activeClassName="active" to={`/projects/${data.node.slug}`}>{data.node.title}</ProjectNavLink>
           </ProjectNavItem>
         ))}
       </NavList>

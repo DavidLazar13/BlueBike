@@ -12,6 +12,10 @@ body {
   font-family: 'Archivo', sans-serif;
 }
 
+img {
+  -webkit-user-drag: none;
+}
+
 #___gatsby,
 #gatsby-focus-wrapper {
   height: 100%;
