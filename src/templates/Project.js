@@ -30,7 +30,7 @@ query projectData($id: String!) {
 `;
 
 const Wrapper = styled.div`
-  max-height: 100vh;
+  height: 100%;
 `;
 
 function Project({ data }) {
@@ -40,10 +40,6 @@ function Project({ data }) {
   return (
 
     <Wrapper>
-      {/*<Img*/}
-      {/*  imgStyle={{ objectPosition: '50% 50%', maxHeight: '100vh', objectFit: isLandscape ? 'cover' : 'contain' }}*/}
-      {/*  fluid={contentfulProject.thumbnail.fluid}*/}
-      {/*/>*/}
       <Carousel data={contentfulProject}/>
     </Wrapper>
 

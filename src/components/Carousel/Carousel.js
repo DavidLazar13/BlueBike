@@ -36,6 +36,17 @@ const AnimatedCarousel = styled(motion.div)`
   width: 100%;
 `;
 
+const CarouselWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const PageButton = styled.div`
+`;
+
 function Carousel({data}) {
     const {gallery} = data;
     const [[page, direction], setPage] = useState([0, 0]);
@@ -45,7 +56,10 @@ function Carousel({data}) {
     };
 
     return (
-        <>
+        <CarouselWrapper>
+            {/*<PageButton className="prev" onClick={() => paginate(-1)}>*/}
+            {/*    {"<"}*/}
+            {/*</PageButton>*/}
             <AnimatePresence initial={false} custom={direction} exitBeforeEnter={true}>
                 <AnimatedCarousel
                     key={page}
@@ -74,7 +88,10 @@ function Carousel({data}) {
                     <CarouselItem data={gallery[imageIndex]} />
                 </AnimatedCarousel>
             </AnimatePresence>
-        </>
+            {/*<PageButton className="next" onClick={() => paginate(1)}>*/}
+            {/*    {">"}*/}
+            {/*</PageButton>*/}
+        </CarouselWrapper>
     );
 }
 

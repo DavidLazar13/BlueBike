@@ -42,6 +42,13 @@ const NavigationCell = styled(Col)`
   flex-direction: column;
 `;
 
+const ProjectsCell = styled(Col)`
+  display: flex;
+  padding: 96px 0 48px 0;
+  flex-direction: column;
+`;
+
+
 const Image = styled.img`
 
 `;
