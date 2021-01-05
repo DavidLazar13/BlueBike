@@ -57,9 +57,9 @@ function Carousel({data}) {
 
     return (
         <CarouselWrapper>
-            {/*<PageButton className="prev" onClick={() => paginate(-1)}>*/}
-            {/*    {"<"}*/}
-            {/*</PageButton>*/}
+            <PageButton className="prev" onClick={() => paginate(-1)}>
+                {"<"}
+            </PageButton>
             <AnimatePresence initial={false} custom={direction} exitBeforeEnter={true}>
                 <AnimatedCarousel
                     key={page}
@@ -88,9 +88,9 @@ function Carousel({data}) {
                     <CarouselItem data={gallery[imageIndex]} />
                 </AnimatedCarousel>
             </AnimatePresence>
-            {/*<PageButton className="next" onClick={() => paginate(1)}>*/}
-            {/*    {">"}*/}
-            {/*</PageButton>*/}
+            <PageButton className="next" onClick={() => paginate(1)}>
+                {">"}
+            </PageButton>
         </CarouselWrapper>
     );
 }
