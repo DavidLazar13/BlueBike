@@ -1,11 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { Cell, Grid } from 'styled-css-grid';
-import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
-import { wrap } from 'popmotion';
 import { useLocation } from '@reach/router';
-import Img from 'gatsby-image';
 import Carousel from "../components/Carousel/Carousel";
 
 export const pageQuery = graphql`
@@ -30,7 +26,7 @@ query projectData($id: String!) {
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 100vh;
 `;
 
 function Project({ data }) {
