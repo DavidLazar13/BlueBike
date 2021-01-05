@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, {ThemeProvider} from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import Navigation from './Navigation';
@@ -7,6 +7,7 @@ import ProjectsNavigation from './ProjectsNavigation';
 import '../style.css';
 import {theme, animations} from '../theme';
 import ContactComponent from "./Contact";
+
 
 
 const Wrapper = styled.div`
@@ -18,7 +19,6 @@ const Wrapper = styled.div`
 `;
 
 const GridWrapper = styled.div`
-  background-color: ${({theme}) => theme.colors.background};
   height: 100%;
   display: grid;
   grid-template-columns: 165px 150px auto;
@@ -37,14 +37,16 @@ const ContentCol = styled(motion.div)`
 `;
 
 const NavigationCell = styled(Col)`
+  background-color: ${({theme, isTransparent}) => isTransparent ? 'white' : theme.colors.background};
+  transition: 0.3s ease background-color;
   display: flex;
   padding: 96px 0 48px 0;
   flex-direction: column;
 `;
 
 const ProjectsCell = styled(Col)`
+  background-color: ${({theme}) => theme.colors.background};
   display: flex;
-  padding: 96px 0 48px 0;
   flex-direction: column;
 `;
 
@@ -75,7 +77,7 @@ function Layout(props) {
       <Wrapper>
         <GridWrapper>
           {/* Main Nav Column */}
-          <NavigationCell>
+          <NavigationCell isTransparent={isSecondColumnActive}>
             <AnimatePresence exitBeforeEnter={false}>
               <AnimatedCol
                 key="index"
@@ -95,11 +97,11 @@ function Layout(props) {
 
           </NavigationCell>
           {!isSecondColumnActive && (
-            <NavigationCell />
+            <NavigationCell isTransparent={isSecondColumnActive}/>
           )}
           {/* Projects Column */}
           {projectsNavigationActive && (
-            <NavigationCell>
+            <NavigationCell isTransparent={isSecondColumnActive}>
               <AnimatePresence exitBeforeEnter={false}>
                 <AnimatedCol
                   key="projects"
@@ -128,7 +130,7 @@ function Layout(props) {
           )}
           {/* Contact Column */}
           {contactNavigationActive && (
-            <NavigationCell>
+            <NavigationCell isTransparent={isSecondColumnActive}>
               <AnimatePresence exitBeforeEnter>
                 <ContentCol
                   key="projects"
@@ -143,7 +145,7 @@ function Layout(props) {
             </NavigationCell>
           )}
           {/* Content Column */}
-          <Col>
+          <ProjectsCell>
             <AnimatePresence exitBeforeEnter>
               <ContentCol
                 key={location.pathname}
@@ -155,7 +157,7 @@ function Layout(props) {
                 {children}
               </ContentCol>
             </AnimatePresence>
-          </Col>
+          </ProjectsCell>
         </GridWrapper>
       </Wrapper>
     </ThemeProvider>
