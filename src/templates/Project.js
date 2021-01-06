@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 import { useLocation } from '@reach/router';
 import Carousel from "../components/Carousel/Carousel";
+import {breakpoint} from "styled-components-breakpoint";
 
 export const pageQuery = graphql`
 query projectData($id: String!) {
@@ -26,7 +27,10 @@ query projectData($id: String!) {
 `;
 
 const Wrapper = styled.div`
+  height: 100%;
+  ${breakpoint('desktop')`
   height: 100vh;
+  `};
 `;
 
 function Project({ data }) {
@@ -34,7 +38,6 @@ function Project({ data }) {
   const location = useLocation();
   const isLandscape = contentfulProject.thumbnail.fluid.aspectRatio > 1;
   return (
-
     <Wrapper>
       <Carousel data={contentfulProject}/>
     </Wrapper>

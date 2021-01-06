@@ -1,15 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import { NavList } from './Navigation';
+import {breakpoint} from "styled-components-breakpoint";
+import { useMatch } from "@reach/router";
 
 const Wrapper = styled.div`
 `;
 
 const ProjectNavItem = styled.li`
+  list-style: none;
   padding-top: 8px;
   padding-bottom: 8px;
-  list-style: none;
+  ${({ projectPageActive }) => projectPageActive && css`
+    ${({isActive}) => !isActive && css`
+    display: none;
+      ${breakpoint('desktop')`
+      display: block;
+      `};
+    `};
+  `};
 `;
 
 const ProjectNavLink = styled(Link)`
@@ -21,6 +31,7 @@ line-height: 13px;
 letter-spacing: 6px;
 text-decoration: none;
   
+
   &:after {
     content: '';
     background-color: ${({ theme }) => theme.colors.secondary};
@@ -66,12 +77,20 @@ query NAV_QUERY {
 
 function ProjectsNavigation() {
   const data = useStaticQuery(NAV_QUERY);
+  const projectPageActive = useMatch('/projects/:var')
   return (
     <Wrapper>
       <NavList>
         {data.allContentfulProject.edges.map(data => (
-          <ProjectNavItem key={data.node.id}>
-            <ProjectNavLink activeClassName="active" to={`/projects/${data.node.slug}`}>{data.node.title}</ProjectNavLink>
+          <ProjectNavItem
+              projectPageActive={projectPageActive}
+              isActive={projectPageActive && projectPageActive.var === data.node.slug}
+
+              key={data.node.id}
+          >
+            <ProjectNavLink activeClassName="active" to={`/projects/${data.node.slug}/`}>
+                {data.node.title}
+            </ProjectNavLink>
           </ProjectNavItem>
         ))}
       </NavList>
