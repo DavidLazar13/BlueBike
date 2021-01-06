@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from '@popmotion/popcorn';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import CarouselItem from './CarouselItem';
 
 const variants = {
@@ -31,6 +31,7 @@ const AnimatedCarousel = styled(motion.div)`
 `;
 
 const CarouselWrapper = styled.div`
+  position: relative;
   height: 100%;
   width: 100%;
   display: flex;
@@ -39,6 +40,11 @@ const CarouselWrapper = styled.div`
 `;
 
 const PageButton = styled.div`
+  position: absolute;
+  ${({ prev }) => prev && css`left: 10px;`}
+  ${({ next }) => next && css`right: 10px;`}
+  top: 40%;
+  z-index: 100;
 `;
 
 function Carousel({ data }) {
@@ -51,8 +57,8 @@ function Carousel({ data }) {
 
   return (
     <CarouselWrapper>
-      <PageButton className="prev" onClick={() => paginate(-1)}>
-        {'<'}
+      <PageButton prev onClick={() => paginate(-1)}>
+        <img src="/left.svg" alt="navigate-previous" />
       </PageButton>
       <AnimatePresence initial={false} custom={direction} exitBeforeEnter>
         <AnimatedCarousel
@@ -82,8 +88,8 @@ function Carousel({ data }) {
           <CarouselItem data={gallery[imageIndex]} />
         </AnimatedCarousel>
       </AnimatePresence>
-      <PageButton className="next" onClick={() => paginate(1)}>
-        {'>'}
+      <PageButton next onClick={() => paginate(1)}>
+        <img src="/right.svg" alt="navigate-next" />
       </PageButton>
     </CarouselWrapper>
   );

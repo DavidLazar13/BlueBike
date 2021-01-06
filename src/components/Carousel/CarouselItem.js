@@ -23,12 +23,9 @@ function CarouselItem(data) {
     <Wrapper>
       <GatsbyImg
         imgStyle={{
+          objectFit: 'contain',
           objectPosition: '50% 50%',
           maxHeight: '100vh',
-          width: 'auto',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
         }}
         fluid={data.data.fluid}
       />
