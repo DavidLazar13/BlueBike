@@ -45,11 +45,15 @@ const CarouselWrapper = styled.div`
 `;
 
 const PageButton = styled.div`
+
 `;
 
 function Carousel({data}) {
     const {gallery} = data;
     const [[page, direction], setPage] = useState([0, 0]);
+    if (!gallery) {
+        return null;
+    }
     const imageIndex = wrap(0, gallery.length, page);
     const paginate = (newDirection) => {
         setPage([page + newDirection, newDirection]);
@@ -57,7 +61,7 @@ function Carousel({data}) {
 
     return (
         <CarouselWrapper>
-            <PageButton className="prev" onClick={() => paginate(-1)}>
+            <PageButton prev className="prev" onClick={() => paginate(-1)}>
                 {"<"}
             </PageButton>
             <AnimatePresence initial={false} custom={direction} exitBeforeEnter={true}>

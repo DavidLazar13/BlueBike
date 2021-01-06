@@ -38,7 +38,6 @@ function Project({ data }) {
   const location = useLocation();
   const isLandscape = contentfulProject.thumbnail.fluid.aspectRatio > 1;
   return (
-
     <Wrapper>
       <Carousel data={contentfulProject}/>
     </Wrapper>

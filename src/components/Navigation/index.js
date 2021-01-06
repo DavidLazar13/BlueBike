@@ -65,12 +65,12 @@ function Navigation() {
     <NavWrapper>
       <NavList>
         <NavItem>
-          <NavLink activeClassName="active" to="/projects">PROJECTS</NavLink>
+          <NavLink activeClassName="active" to="/projects/">PROJECTS</NavLink>
         </NavItem>
       </NavList>
       <NavList>
         <NavItem>
-          <NavLink activeClassName="active" to="/contact">CONTACT</NavLink>
+          <NavLink activeClassName="active" to="/contact/">CONTACT</NavLink>
         </NavItem>
       </NavList>
     </NavWrapper>
