@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {breakpoint} from "styled-components-breakpoint";
 
 const ContactItem = styled.p`
   color: ${({ theme }) => theme.colors.secondary};
@@ -8,9 +9,13 @@ const ContactItem = styled.p`
   font-size: 12px;
   line-height: 13px;
   letter-spacing: 6px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   margin: 0;
+  ${breakpoint('desktop')`
+    padding-top: 8px;
+    padding-bottom: 8px;
+  `};
 `;
 
 const Wrapper = styled.div`
@@ -22,6 +27,16 @@ const Wrapper = styled.div`
 
 const LabelWrapper = styled.div`
 //height: 100%;
+//  z-index: 2;
+  position: absolute;
+  top: 260px;
+  left: 40px;
+  ${breakpoint('desktop')`
+    position: unset;
+    top: unset;
+    z-index: unset;
+    left: unset;
+  `};
 `;
 
 function ContactComponent() {

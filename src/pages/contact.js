@@ -1,13 +1,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { graphql } from 'gatsby';
+import {breakpoint} from "styled-components-breakpoint";
 
 const Wrapper = styled.div`
   max-height: 100vh ;
   height: 100%;
   display: flex;
   align-items: flex-end;
-  padding: 96px 0 48px 0;
+  padding: 96px 0 48px 40px;
   box-sizing: border-box;
 `;
 
@@ -18,11 +19,15 @@ const Paragraph = styled.p`
   line-height: 13px;
   letter-spacing: 1.2px;
   margin: 0;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   ${({ wide }) => wide && css`
     letter-spacing: 6px;
-  `}
+  `};
+  ${breakpoint('desktop')`
+    padding-top: 8px;
+    padding-bottom: 8px;
+  `};
 `;
 
 export const CONTACT_QUERY = graphql`

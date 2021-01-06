@@ -7,6 +7,7 @@ import ProjectsNavigation from './ProjectsNavigation';
 import '../style.css';
 import {theme, animations} from '../theme';
 import ContactComponent from "./Contact";
+import breakpoint from 'styled-components-breakpoint';
 
 
 
@@ -19,9 +20,16 @@ const Wrapper = styled.div`
 `;
 
 const GridWrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   display: grid;
-  grid-template-columns: 165px 150px auto;
+  grid: 
+      'col1 col2'
+      'col1 col3';
+  ${breakpoint('desktop')`
+    padding-left: 80px;
+    grid: unset;
+    grid-template-columns: 165px 150px auto;
+  `}
 `;
 
 const Col = styled.div`
@@ -37,17 +45,49 @@ const ContentCol = styled(motion.div)`
 `;
 
 const NavigationCell = styled(Col)`
+  
+  display: flex;
+  padding: 96px 0 48px 40px;
+  flex-direction: column;
+  grid-area: col1;
+  width: 165px;
+  //z-index: 1;
+  //height: 100%; //this + switch col1 to col3
+  &:nth-of-type(2){
+    grid-area: col2;
+    width: 115px;
+    padding-left: 0;
+    ${breakpoint('desktop')`
+      width: 150px;
+      grid-area: unset;
+    `};
+  }
+  ${breakpoint('desktop')`
   background-color: ${({theme, isTransparent}) => isTransparent ? 'white' : theme.colors.background};
   transition: 0.5s ease-in-out background-color;
-  display: flex;
-  padding: 96px 0 48px 0;
-  flex-direction: column;
+    padding: 96px 0 48px 0;
+    grid-area: unset;
+    height: unset;
+  `};
 `;
 
 const ProjectsCell = styled(Col)`
   background-color: ${({theme}) => theme.colors.background};
+  display: block;
+  grid-area: col3;
+  position: absolute;
+  top: 180px;
+  width: 100%;
+  //height: 50%;
+  height: 50vh;
+  z-index: 0;
+  ${breakpoint('desktop')`
   display: flex;
   flex-direction: column;
+  grid-area: unset;
+  position: unset;
+  height: unset;
+  `};
 `;
 
 
@@ -94,7 +134,6 @@ function Layout(props) {
               </AnimatedCol>
               <Navigation />
             </AnimatePresence>
-
           </NavigationCell>
 
           <NavigationCell isTransparent={isSecondColumnActive}>
