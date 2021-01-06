@@ -1,11 +1,11 @@
 import React from 'react';
-import styled, {ThemeProvider} from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import Navigation from './Navigation';
 import ProjectsNavigation from './ProjectsNavigation';
 import '../style.css';
-import {theme, animations} from '../theme';
+import { theme, animations } from '../theme';
 import ContactComponent from "./Contact";
 import breakpoint from 'styled-components-breakpoint';
 
@@ -42,10 +42,10 @@ const AnimatedCol = styled(motion.div)`
 
 const ContentCol = styled(motion.div)`
   height: 100%;
+  max-height: 100vh;
 `;
 
 const NavigationCell = styled(Col)`
-  
   display: flex;
   padding: 96px 0 48px 40px;
   flex-direction: column;
@@ -63,8 +63,8 @@ const NavigationCell = styled(Col)`
     `};
   }
   ${breakpoint('desktop')`
-  background-color: ${({theme, isTransparent}) => isTransparent ? 'white' : theme.colors.background};
-  transition: 0.5s ease-in-out background-color;
+    background-color: ${({theme, isTransparent}) => isTransparent ? 'white' : theme.colors.background};
+    transition: 0.5s ease-in-out background-color;
     padding: 96px 0 48px 0;
     grid-area: unset;
     height: unset;
@@ -82,11 +82,11 @@ const ProjectsCell = styled(Col)`
   height: 50vh;
   z-index: 0;
   ${breakpoint('desktop')`
-  display: flex;
-  flex-direction: column;
-  grid-area: unset;
-  position: unset;
-  height: unset;
+    display: flex;
+    flex-direction: column;
+    grid-area: unset;
+    position: unset;
+    height: unset;
   `};
 `;
 
@@ -135,56 +135,49 @@ function Layout(props) {
               <Navigation />
             </AnimatePresence>
           </NavigationCell>
-
           <NavigationCell isTransparent={isSecondColumnActive}>
             {projectsNavigationActive && (
-                <>
-                  <AnimatePresence exitBeforeEnter={false}>
-                    <AnimatedCol
-                        key="projects"
-                        initial="in"
-                        animate="animate"
-                        exit="exit"
-                        variants={animations.slideAnimation}
-                    >
-                      <SecondLogoWrapper>
-                        <Image src="/&.svg" />
-                      </SecondLogoWrapper>
-                    </AnimatedCol>
-                  </AnimatePresence>
-                  <AnimatePresence exitBeforeEnter={false}>
-                    <AnimatedCol
-                        key="projects"
-                        initial="in"
-                        animate="animate"
-                        exit="exit"
-                        variants={animations.fadeAnimation}
-                    >
-                      <ProjectsNavigation />
-                    </AnimatedCol>
-                  </AnimatePresence>
-                </>
+              <>
+                <AnimatePresence exitBeforeEnter={false}>
+                  <AnimatedCol
+                    key="projects"
+                    initial="in"
+                    animate="animate"
+                    exit="exit"
+                    variants={animations.slideAnimation}
+                  >
+                    <SecondLogoWrapper>
+                      <Image src="/&.svg" />
+                    </SecondLogoWrapper>
+                  </AnimatedCol>
+                </AnimatePresence>
+                <AnimatePresence exitBeforeEnter={false}>
+                  <AnimatedCol
+                    key="projects"
+                    initial="in"
+                    animate="animate"
+                    exit="exit"
+                    variants={animations.fadeAnimation}
+                  >
+                    <ProjectsNavigation />
+                  </AnimatedCol>
+                </AnimatePresence>
+              </>
             )}
             {contactNavigationActive && (
-                  <AnimatePresence exitBeforeEnter>
-                    <ContentCol
-                        key="projects"
-                        initial="in"
-                        animate="animate"
-                        exit="exit"
-                        variants={animations.fadeAnimation}
-                    >
-                      <ContactComponent/>
-                    </ContentCol>
-                  </AnimatePresence>
+              <AnimatePresence exitBeforeEnter>
+                <ContentCol
+                  key="projects"
+                  initial="in"
+                  animate="animate"
+                  exit="exit"
+                  variants={animations.fadeAnimation}
+                >
+                  <ContactComponent />
+                </ContentCol>
+              </AnimatePresence>
             )}
           </NavigationCell>
-
-          {/* Projects Column */}
-
-          {/* Contact Column */}
-
-          {/* Content Column */}
           <ProjectsCell>
             <AnimatePresence exitBeforeEnter>
               <ContentCol
