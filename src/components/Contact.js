@@ -26,11 +26,9 @@ const Wrapper = styled.div`
 `;
 
 const LabelWrapper = styled.div`
-//height: 100%;
-//  z-index: 2;
   position: absolute;
-  top: 260px;
-  left: 40px;
+  top: 57%;
+  left: 12%;
   ${breakpoint('desktop')`
     position: unset;
     top: unset;

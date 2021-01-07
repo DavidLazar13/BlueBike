@@ -21,7 +21,6 @@ const Wrapper = styled.div`
 `;
 
 const GridWrapper = styled.div`
-    padding-left: 40px;
   height: 100vh;
   display: grid;
   grid: 
@@ -48,8 +47,6 @@ const ContentCol = styled(motion.div)`
 `;
 
 const NavigationCell = styled(Col)`
-  background-color: ${({theme, isTransparent}) => isTransparent ? 'white' : theme.colors.background};
-  transition: 0.5s ease-in-out background-color;
   display: flex;
   padding: 48px 0 42px 40px;
   flex-direction: column;
@@ -65,6 +62,8 @@ const NavigationCell = styled(Col)`
     `};
   }
   ${breakpoint('desktop')`
+    background-color: ${({theme, isTransparent}) => isTransparent ? 'white' : theme.colors.background};
+    transition: 0.5s ease-in-out background-color;
     padding: 96px 0 48px 0;
     grid-area: unset;
     height: unset;
@@ -112,7 +111,8 @@ function Layout(props) {
   const projectsNavigationActive = location.pathname.indexOf('projects') === 1;
   const contactNavigationActive = location.pathname.indexOf('contact') === 1;
   const isSecondColumnActive = projectsNavigationActive || contactNavigationActive;
-  const isActive = useMatch('/projects/:var')
+  const isActive = useMatch('/projects/:var') || useMatch('/contact/');
+  // const isContactActive = useMatch('/projects/:var');
 
   return (
     <ThemeProvider theme={theme}>
