@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 const MapPin = () => (
   <div>
-    <img src="/map-pin.svg" width="30px" />
+    <img src="/map-pin.svg" width="30px" alt="pin-point" />
   </div>
 );
 
