@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { graphql } from 'gatsby';
-import {breakpoint} from "styled-components-breakpoint";
+import { breakpoint } from 'styled-components-breakpoint';
+import GoogleMap from '../components/GoogleMap';
 
 const Wrapper = styled.div`
   max-height: 100vh ;
@@ -44,6 +45,7 @@ function Contact({ data }) {
   const { contentfulContact } = data;
   return (
     <Wrapper>
+      <GoogleMap />
       <div>
         <Paragraph>{contentfulContact.adress}</Paragraph>
         <Paragraph>{contentfulContact.eMail}</Paragraph>
