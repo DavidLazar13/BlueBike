@@ -30,8 +30,6 @@ font-size: 12px;
 line-height: 13px;
 letter-spacing: 6px;
 text-decoration: none;
-  
-
   &:after {
     content: '';
     background-color: ${({ theme }) => theme.colors.secondary};

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider, css } from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import Navigation from './Navigation';
@@ -8,6 +8,7 @@ import '../style.css';
 import { theme, animations } from '../theme';
 import ContactComponent from "./Contact";
 import breakpoint from 'styled-components-breakpoint';
+import { useMatch } from "@reach/router";
 
 
 
@@ -47,15 +48,13 @@ const ContentCol = styled(motion.div)`
 
 const NavigationCell = styled(Col)`
   display: flex;
-  padding: 96px 0 48px 40px;
+  padding: 48px 0 42px 40px;
   flex-direction: column;
   grid-area: col1;
-  width: 165px;
-  //z-index: 1;
-  //height: 100%; //this + switch col1 to col3
+  min-width: 165px;
   &:nth-of-type(2){
     grid-area: col2;
-    width: 115px;
+    min-width: 115px;
     padding-left: 0;
     ${breakpoint('desktop')`
       width: 150px;
@@ -72,16 +71,17 @@ const NavigationCell = styled(Col)`
 `;
 
 const ProjectsCell = styled(Col)`
-  background-color: ${({theme}) => theme.colors.background};
-  display: block;
+  display: none;
   grid-area: col3;
   position: absolute;
-  top: 180px;
+  top: 25%;
   width: 100%;
-  //height: 50%;
-  height: 50vh;
-  z-index: 0;
+  height: 60%;
+  ${({isActive}) => isActive && css`
+    display: block;
+  `};
   ${breakpoint('desktop')`
+    background-color: ${({theme}) => theme.colors.background};
     display: flex;
     flex-direction: column;
     grid-area: unset;
@@ -111,6 +111,8 @@ function Layout(props) {
   const projectsNavigationActive = location.pathname.indexOf('projects') === 1;
   const contactNavigationActive = location.pathname.indexOf('contact') === 1;
   const isSecondColumnActive = projectsNavigationActive || contactNavigationActive;
+  const isActive = useMatch('/projects/:var') || useMatch('/contact/');
+  // const isContactActive = useMatch('/projects/:var');
 
   return (
     <ThemeProvider theme={theme}>
@@ -178,7 +180,7 @@ function Layout(props) {
               </AnimatePresence>
             )}
           </NavigationCell>
-          <ProjectsCell>
+          <ProjectsCell isActive={isActive} >
             <AnimatePresence exitBeforeEnter>
               <ContentCol
                 key={location.pathname}

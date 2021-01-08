@@ -8,9 +8,13 @@ const Wrapper = styled.div`
   max-height: 100vh ;
   height: 100%;
   display: flex;
-  align-items: flex-end;
-  padding: 96px 0 48px 40px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0 0 40px;
   box-sizing: border-box;
+  ${breakpoint('desktop')`
+  padding: 96px 0 48px 48px;
+  `};
 `;
 
 const Paragraph = styled.p`
@@ -45,12 +49,11 @@ function Contact({ data }) {
   const { contentfulContact } = data;
   return (
     <Wrapper>
-      <GoogleMap />
-      <div>
+        <GoogleMap />
         <Paragraph>{contentfulContact.adress}</Paragraph>
         <Paragraph>{contentfulContact.eMail}</Paragraph>
         <Paragraph wide>{contentfulContact.phone}</Paragraph>
-      </div>
+
     </Wrapper>
   );
 }
