@@ -62,8 +62,8 @@ const NavigationCell = styled(Col)`
     `};
   }
   ${breakpoint('desktop')`
-    background-color: ${({theme, isTransparent}) => isTransparent ? 'white' : theme.colors.background};
-    transition: 0.5s ease-in-out background-color;
+    // background-color: ${({theme, isTransparent}) => isTransparent ? 'white' : theme.colors.background};
+    // transition: 0.5s ease-in-out background-color;
     padding: 96px 0 48px 0;
     grid-area: unset;
     height: unset;
@@ -81,7 +81,7 @@ const ProjectsCell = styled(Col)`
     display: block;
   `};
   ${breakpoint('desktop')`
-    background-color: ${({theme}) => theme.colors.background};
+    // background-color: ${({theme}) => theme.colors.background};
     display: flex;
     flex-direction: column;
     grid-area: unset;
