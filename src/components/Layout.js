@@ -73,7 +73,7 @@ const ProjectsCell = styled(Col)`
   margin-left: -40px;
   grid-area: col3;
   position: absolute;
-  top: 25%;
+  top: 24%;
   width: 100%;
   height: 60%;
   ${({isActive}) => isActive && css`

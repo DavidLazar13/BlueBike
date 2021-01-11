@@ -49,7 +49,7 @@ function Contact({ data }) {
   const { contentfulContact } = data;
   return (
     <Wrapper>
-        {/*<GoogleMap />*/}
+        <GoogleMap />
         <Paragraph>{contentfulContact.adress}</Paragraph>
         <Paragraph>{contentfulContact.eMail}</Paragraph>
         <Paragraph wide>{contentfulContact.phone}</Paragraph>
