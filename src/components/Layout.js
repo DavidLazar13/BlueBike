@@ -11,17 +11,15 @@ import breakpoint from 'styled-components-breakpoint';
 import { useMatch } from "@reach/router";
 import BackgroundComponent from "./Background";
 
-
-
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   max-width: 100%;
   max-height: 100%;
   overflow: hidden;
-  padding-left: 40px;
+  //padding-left: 40px;
   ${breakpoint('desktop')`
-  padding-left: 80px;
+  // padding-left: 80px;
   `}
 `;
 
@@ -83,7 +81,6 @@ const ProjectsCell = styled(Col)`
     display: block;
   `};
   ${breakpoint('desktop')`
-    // background-color: ${({theme}) => theme.colors.background};
     display: flex;
     flex-direction: column;
     grid-area: unset;
