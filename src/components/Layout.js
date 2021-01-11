@@ -70,6 +70,7 @@ const NavigationCell = styled(Col)`
 
 const ProjectsCell = styled(Col)`
   display: none;
+  margin-left: -40px;
   grid-area: col3;
   position: absolute;
   top: 25%;
@@ -79,6 +80,7 @@ const ProjectsCell = styled(Col)`
     display: block;
   `};
   ${breakpoint('desktop')`
+    margin-left: unset;
     display: flex;
     flex-direction: column;
     grid-area: unset;
