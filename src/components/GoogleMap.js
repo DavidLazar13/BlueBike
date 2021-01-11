@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { breakpoint } from 'styled-components-breakpoint';
 import GoogleMapReact from 'google-map-react';
 import MapPin from './MapPin';
-import MapStyle from './MapPin/MapStyle';
+import MapStyle from './MapPin/mapStyle';
 
 const MapWrapper = styled.div`
   height: 90%;
@@ -25,6 +25,7 @@ const defaultProps = {
 };
 
 function GoogleMap() {
+
   return (
     <MapWrapper>
       <GoogleMapReact

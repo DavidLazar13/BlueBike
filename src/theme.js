@@ -4,12 +4,13 @@ export const theme = {
         secondary: '#C7C4C0',
         background: '#F2F1EE',
     },
+
 };
 
 export const animations = {
     slideAnimation: {
         in: {
-            x: '-100vw',
+            x: '-4vw',
         },
         animate: {
             x: '0vw',
