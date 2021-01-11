@@ -41,9 +41,9 @@ const CarouselWrapper = styled.div`
 
 const PageButton = styled.div`
   position: absolute;
-  ${({ prev }) => prev && css`left: -5%;`}
-  ${({ next }) => next && css`right: -5%;`}
-  top: 35%;
+  ${({ prev }) => prev && css`left: 10px;`}
+  ${({ next }) => next && css`right: 10px;`}
+  top: 40%;
   z-index: 100;
   opacity: 1;
 `;
@@ -52,7 +52,7 @@ function Carousel({ data }) {
   const { gallery } = data;
   const [[page, direction], setPage] = useState([0, 0]);
   if (!gallery) {
-      return null;
+    return null;
   }
   const imageIndex = wrap(0, gallery.length, page);
   const paginate = newDirection => {
@@ -61,9 +61,9 @@ function Carousel({ data }) {
 
   return (
     <CarouselWrapper>
-      {/*<PageButton prev onClick={() => paginate(-1)}>*/}
-      {/*  <img src="/left.svg" alt="navigate-previous" />*/}
-      {/*</PageButton>*/}
+      <PageButton prev onClick={() => paginate(-1)}>
+        <img src="/left.svg" alt="navigate-previous" />
+      </PageButton>
       <AnimatePresence initial={false} custom={direction} exitBeforeEnter>
         <AnimatedCarousel
           key={page}
@@ -91,9 +91,9 @@ function Carousel({ data }) {
           <CarouselItem data={gallery[imageIndex]} />
         </AnimatedCarousel>
       </AnimatePresence>
-      {/*<PageButton next onClick={() => paginate(1)}>*/}
-      {/*  <img src="/right.svg" alt="navigate-next" />*/}
-      {/*</PageButton>*/}
+      <PageButton next onClick={() => paginate(1)}>
+        <img src="/right.svg" alt="navigate-next" />
+      </PageButton>
     </CarouselWrapper>
   );
 }

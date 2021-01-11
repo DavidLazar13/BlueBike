@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { graphql, Link, useStaticQuery } from 'gatsby';
+import { breakpoint } from 'styled-components-breakpoint';
+import { useMatch } from '@reach/router';
 import { NavList } from './Navigation';
-import {breakpoint} from "styled-components-breakpoint";
-import { useMatch } from "@reach/router";
 
 const Wrapper = styled.div`
 `;
@@ -13,7 +13,7 @@ const ProjectNavItem = styled.li`
   padding-top: 8px;
   padding-bottom: 8px;
   ${({ projectPageActive }) => projectPageActive && css`
-    ${({isActive}) => !isActive && css`
+    ${({ isActive }) => !isActive && css`
     display: none;
       ${breakpoint('desktop')`
       display: block;
@@ -37,14 +37,15 @@ text-decoration: none;
     margin-top: 8px;
     display: block;
     position: absolute;
-    width: 30%;
+    width: 0;
     height: 1px;
     opacity: 0;
-    transition: 0.5s;
+    transition: 0.7s ease all;
   }
 
   &.active:after {
     display: block;
+    width: 50px;
     opacity: 1;
   }
 
@@ -55,6 +56,9 @@ text-decoration: none;
     &:after {
       display: block;
       opacity: 1;
+      width: 50px;
+      opacity: 1;
+      transition: 0.7s ease all;
     }
   }
 `;
@@ -75,19 +79,19 @@ query NAV_QUERY {
 
 function ProjectsNavigation() {
   const data = useStaticQuery(NAV_QUERY);
-  const projectPageActive = useMatch('/projects/:var')
+  const projectPageActive = useMatch('/projects/:var');
   return (
     <Wrapper>
       <NavList>
         {data.allContentfulProject.edges.map(data => (
           <ProjectNavItem
-              projectPageActive={projectPageActive}
-              isActive={projectPageActive && projectPageActive.var === data.node.slug}
+            projectPageActive={projectPageActive}
+            isActive={projectPageActive && projectPageActive.var === data.node.slug}
 
-              key={data.node.id}
+            key={data.node.id}
           >
             <ProjectNavLink activeClassName="active" to={`/projects/${data.node.slug}/`}>
-                {data.node.title}
+              {data.node.title}
             </ProjectNavLink>
           </ProjectNavItem>
         ))}

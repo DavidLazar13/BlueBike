@@ -36,16 +36,15 @@ const NavLink = styled(Link)`
       margin-top: 8px;
       display: block;
       position: absolute;
-      width: 5%;
+      width: 0;
       height: 1px;
       opacity: 0;
-      transition: 0.5s;
+      transition: 0.7s ease all;
       }
-    
-  
-    
+      
     &.active:after {
       display: block;
+      width: 65px;
       opacity: 1;
       }
     
@@ -55,7 +54,9 @@ const NavLink = styled(Link)`
    
       &:after {
         display: block;
+        width: 65px;
         opacity: 1;
+        transition: 0.7s ease all;
         }
       }
 `;
