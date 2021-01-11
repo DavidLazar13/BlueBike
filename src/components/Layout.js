@@ -17,19 +17,17 @@ const Wrapper = styled.div`
   max-width: 100%;
   max-height: 100%;
   overflow: hidden;
-  //padding-left: 40px;
-  ${breakpoint('desktop')`
-  // padding-left: 80px;
-  `}
 `;
 
 const GridWrapper = styled.div`
   height: 100vh;
+  padding-left: 40px;
   display: grid;
   grid: 
       'col1 col2'
       'col1 col3';
   ${breakpoint('desktop')`
+    padding-left: 80px;
     grid: unset;
     grid-template-columns: 165px 150px auto;
   `}

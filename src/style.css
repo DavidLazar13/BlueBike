@@ -3,15 +3,8 @@
 html,
 body {
   margin: 0;
-  padding: 0 0 0 40px;
+  padding: 0;
   height: 100%;
-}
-
-@media screen and (max-width: 500px) {
-  html,
-  body {
-    padding-left: 20px;
-  }
 }
 
 body {
