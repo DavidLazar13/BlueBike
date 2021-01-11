@@ -108,10 +108,12 @@ function Layout(props) {
   const isProjectsActive = useMatch('/projects/') || useMatch('/projects/:var');
   const isContactActive = useMatch('/contact');
   const isContentActive = useMatch('/projects/:var') || useMatch('/contact/');
+  const isBackgroundCollapsed = useMatch('/projects/:var') || useMatch('/contact/');;
+
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
-        <BackgroundComponent>
+        <BackgroundComponent isBackgroundCollapsed={isBackgroundCollapsed}>
           <GridWrapper>
             {/* Main Nav Column */}
             <NavigationCell>
