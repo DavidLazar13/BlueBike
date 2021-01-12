@@ -1,6 +1,7 @@
 image: node:12.20.1
 deploy:
   script:
+    - npm install -g gatsby-cli
     - npm install
     - gatsby build
     - ls -la
