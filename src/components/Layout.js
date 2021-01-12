@@ -23,27 +23,34 @@ const GridWrapper = styled.div`
   height: 100vh;
   padding-left: 40px;
   display: grid;
-  grid: 
-      'col1 col2'
-      'col1 col3';
+  grid-template-columns: 165px auto;
+  grid-template-areas: 
+      'col1 col2';
   ${breakpoint('desktop')`
     padding-left: 80px;
-    grid: unset;
-    grid-template-columns: 165px 150px auto;
+    grid-template-areas: unset;
+  `}
+`;
+
+const SecondGridWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-area: col2;
+  grid-template-areas: 
+      'col3 col4';
+  grid-template-columns: 150px auto;
+  //position: absolute;
+  //right: 100% -115px;
+  ${breakpoint('desktop')`
+    grid-area: unset;
+    grid-template-area: unset;
+    position: unset;
   `}
 `;
 
 const Col = styled.div`
-
-`;
-
-const AnimatedCol = styled(motion.div)`
-  position: relative;
-`;
-
-const ContentCol = styled(motion.div)`
-  height: 100%;
-  max-height: 100vh;
+    
 `;
 
 const NavigationCell = styled(Col)`
@@ -51,16 +58,7 @@ const NavigationCell = styled(Col)`
   padding: 48px 0 42px 0;
   flex-direction: column;
   grid-area: col1;
-  min-width: 165px;
-  &:nth-of-type(2){
-    grid-area: col2;
-    min-width: 115px;
-    padding-left: 0;
-    ${breakpoint('desktop')`
-      width: 150px;
-      grid-area: unset;
-    `};
-  }
+  width: 165px;
   ${breakpoint('desktop')`
     padding: 96px 0 48px 0;
     grid-area: unset;
@@ -68,12 +66,42 @@ const NavigationCell = styled(Col)`
   `};
 `;
 
+const SecondNavigationCell = styled(Col)`
+  //display: flex;
+  //flex-direction: column;
+  padding: 48px 0 42px 0;
+  grid-area: col3;
+  min-width: 115px;
+  ${({isMobile}) => isMobile && css`
+    display: block;
+    position: absolute;
+    top: 24%;
+    right: 0%;
+    width: 100%;
+    height: 60%;
+    ${breakpoint('desktop')`
+      display: unset;
+      position: unset;
+      top: unset;
+      right: unset;
+      width: unset;
+      height: unset;
+  `};
+  `};
+  ${breakpoint('desktop')`
+      padding: 96px 0 48px 0;
+      height: unset;
+      width: 150px;
+      grid-area: unset;
+  `};
+`;
+
 const ProjectsCell = styled(Col)`
   display: none;
-  margin-left: -40px;
-  grid-area: col3;
+  grid-area: col4;
   position: absolute;
   top: 24%;
+  right: 0%;
   width: 100%;
   height: 60%;
   ${({isActive}) => isActive && css`
@@ -85,13 +113,21 @@ const ProjectsCell = styled(Col)`
     flex-direction: column;
     grid-area: unset;
     position: unset;
-    height: unset;
+    height: 100%;
   `};
 `;
 
 
-const Image = styled.img`
+const AnimatedCol = styled(motion.div)`
+  position: relative;
+`;
 
+const ContentCol = styled(motion.div)`
+  height: 100%;
+  max-height: 100vh;
+`;
+
+const Image = styled.img`
 `;
 
 const Div = styled.div`
@@ -109,6 +145,7 @@ function Layout(props) {
   const isContactActive = useMatch('/contact');
   const isContentActive = useMatch('/projects/:var') || useMatch('/contact/');
   const isBackgroundCollapsed = useMatch('/projects/') || useMatch('/contact/') || useMatch('/projects/:var');
+  const isMobile = useMatch('/contact/');
 
   return (
     <ThemeProvider theme={theme}>
@@ -134,62 +171,64 @@ function Layout(props) {
                 <Navigation />
               </AnimatePresence>
             </NavigationCell>
-            <NavigationCell>
-              {isProjectsActive && (
-                <>
-                  <AnimatePresence exitBeforeEnter={false}>
-                    <AnimatedCol
-                      key="projects"
-                      initial="in"
-                      animate="animate"
-                      exit="exit"
-                      variants={animations.fadeAnimation}
-                    >
-                      <SecondLogoWrapper>
-                        <Image src="/&.svg" />
-                      </SecondLogoWrapper>
-                    </AnimatedCol>
-                  </AnimatePresence>
-                  <AnimatePresence exitBeforeEnter={false}>
-                    <AnimatedCol
+            <SecondGridWrapper>
+              <SecondNavigationCell isMobile={isMobile}>
+                {isProjectsActive && (
+                  <>
+                    <AnimatePresence exitBeforeEnter={false}>
+                      <AnimatedCol
+                        key="projects"
+                        initial="in"
+                        animate="animate"
+                        exit="exit"
+                        variants={animations.fadeAnimation}
+                      >
+                        <SecondLogoWrapper>
+                          <Image src="/&.svg" />
+                        </SecondLogoWrapper>
+                      </AnimatedCol>
+                    </AnimatePresence>
+                    <AnimatePresence exitBeforeEnter={false}>
+                      <AnimatedCol
+                        key="projects"
+                        initial="in"
+                        animate="animate"
+                        exit="exit"
+                        variants={animations.slideAnimation}
+                      >
+                        <ProjectsNavigation />
+                      </AnimatedCol>
+                    </AnimatePresence>
+                  </>
+                )}
+                {isContactActive && (
+                  <AnimatePresence exitBeforeEnter>
+                    <ContentCol
                       key="projects"
                       initial="in"
                       animate="animate"
                       exit="exit"
                       variants={animations.slideAnimation}
                     >
-                      <ProjectsNavigation />
-                    </AnimatedCol>
+                      <ContactComponent />
+                    </ContentCol>
                   </AnimatePresence>
-                </>
-              )}
-              {isContactActive && (
+                )}
+              </SecondNavigationCell>
+              <ProjectsCell isActive={isContentActive} >
                 <AnimatePresence exitBeforeEnter>
                   <ContentCol
-                    key="projects"
+                    key={location.pathname}
                     initial="in"
                     animate="animate"
                     exit="exit"
-                    variants={animations.slideAnimation}
+                    variants={animations.fadeAnimation}
                   >
-                    <ContactComponent />
+                    {children}
                   </ContentCol>
                 </AnimatePresence>
-              )}
-            </NavigationCell>
-            <ProjectsCell isActive={isContentActive} >
-              <AnimatePresence exitBeforeEnter>
-                <ContentCol
-                  key={location.pathname}
-                  initial="in"
-                  animate="animate"
-                  exit="exit"
-                  variants={animations.fadeAnimation}
-                >
-                  {children}
-                </ContentCol>
-              </AnimatePresence>
-            </ProjectsCell>
+              </ProjectsCell>
+            </SecondGridWrapper>
           </GridWrapper>
         </BackgroundComponent>
       </Wrapper>

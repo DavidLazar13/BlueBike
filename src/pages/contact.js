@@ -10,7 +10,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0 0 0 40px;
+  //padding: 0 0 0 40px;
+  padding: 0;
   box-sizing: border-box;
   ${breakpoint('desktop')`
   padding: 96px 0 48px 48px;
@@ -26,12 +27,14 @@ const Paragraph = styled.p`
   margin: 0;
   padding-top: 16px;
   padding-bottom: 16px;
+  padding-left: 40px;
   ${({ wide }) => wide && css`
     letter-spacing: 6px;
   `};
   ${breakpoint('desktop')`
     padding-top: 8px;
     padding-bottom: 8px;
+    padding-left: 0px;
   `};
 `;
 
