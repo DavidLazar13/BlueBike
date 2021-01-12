@@ -99,6 +99,7 @@ const SecondNavigationCell = styled(Col)`
 const ProjectsCell = styled(Col)`
   display: none;
   grid-area: col4;
+  overflow: hidden;
   position: absolute;
   top: 24%;
   right: 0%;
@@ -108,11 +109,11 @@ const ProjectsCell = styled(Col)`
     display: block;
   `};
   ${breakpoint('desktop')`
-    margin-left: unset;
     display: flex;
     flex-direction: column;
     grid-area: unset;
     position: unset;
+    top: 0%;
     height: 100%;
   `};
 `;
@@ -143,7 +144,8 @@ function Layout(props) {
   const isProjectsActive = useMatch('/projects/') || useMatch('/projects/:var');
   const isContactActive = useMatch('/contact');
   const isContentActive = useMatch('/projects/:var') || useMatch('/contact/');
-  const isBackgroundCollapsed = useMatch('/projects/') || useMatch('/contact/') || useMatch('/projects/:var');
+  const isBackgroundCollapsed =
+      useMatch('/projects/') || useMatch('/contact/') || useMatch('/projects/:var');
   const isMobile = useMatch('/contact/');
 
   return (
