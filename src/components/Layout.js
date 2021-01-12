@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const GridWrapper = styled.div`
-  height: 100vh;
+  height: 100%;
   padding-left: 40px;
   display: grid;
   grid-template-columns: 165px auto;
@@ -86,7 +86,7 @@ const SecondNavigationCell = styled(Col)`
       right: unset;
       width: unset;
       height: unset;
-  `};
+    `};
   `};
   ${breakpoint('desktop')`
       padding: 96px 0 48px 0;
@@ -124,7 +124,6 @@ const AnimatedCol = styled(motion.div)`
 
 const ContentCol = styled(motion.div)`
   height: 100%;
-  max-height: 100vh;
 `;
 
 const Image = styled.img`

@@ -5,14 +5,12 @@ import { breakpoint } from 'styled-components-breakpoint';
 import GoogleMap from '../components/GoogleMap';
 
 const Wrapper = styled.div`
-  max-height: 100vh ;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  //padding: 0 0 0 40px;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0;
   ${breakpoint('desktop')`
   padding: 96px 0 48px 48px;
   `};
@@ -56,7 +54,6 @@ function Contact({ data }) {
         <Paragraph>{contentfulContact.adress}</Paragraph>
         <Paragraph>{contentfulContact.eMail}</Paragraph>
         <Paragraph wide>{contentfulContact.phone}</Paragraph>
-
     </Wrapper>
   );
 }

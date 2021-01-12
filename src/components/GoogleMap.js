@@ -6,10 +6,10 @@ import MapPin from './MapPin';
 import MapStyle from './MapPin/mapStyle';
 
 const MapWrapper = styled.div`
+  display: flex;
   height: 90%;
   width: 100%;
   padding-bottom: 10%;
-  /* filter: grayscale(100%); */
     ${breakpoint('desktop')`
         width: 90%;
         padding-left: 10%;

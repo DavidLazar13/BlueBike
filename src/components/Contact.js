@@ -24,6 +24,7 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: flex-end;
+  flex-wrap: wrap;
   box-sizing: border-box;
 `;
 
