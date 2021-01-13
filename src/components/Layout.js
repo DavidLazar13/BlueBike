@@ -40,8 +40,6 @@ const SecondGridWrapper = styled.div`
   grid-template-areas: 
       'col3 col4';
   grid-template-columns: 150px auto;
-  //position: absolute;
-  //right: 100% -115px;
   ${breakpoint('desktop')`
     grid-area: unset;
     grid-template-area: unset;
@@ -67,8 +65,6 @@ const NavigationCell = styled(Col)`
 `;
 
 const SecondNavigationCell = styled(Col)`
-  //display: flex;
-  //flex-direction: column;
   padding: 48px 0 42px 0;
   grid-area: col3;
   min-width: 115px;
@@ -121,6 +117,8 @@ const ProjectsCell = styled(Col)`
 
 const AnimatedCol = styled(motion.div)`
   position: relative;
+  padding: 0;
+  margin: 0;
 `;
 
 const ContentCol = styled(motion.div)`
@@ -131,12 +129,13 @@ const Image = styled.img`
 `;
 
 const Div = styled.div`
-align-items: center;
-justify-content: left;
-display: flex;
+//align-items: center;
+//justify-content: left;
+//display: flex;
 `;
 
 const SecondLogoWrapper = styled.div`
+  
 `;
 
 function Layout(props) {
@@ -169,8 +168,8 @@ function Layout(props) {
                     </Link>
                   </Div>
                 </AnimatedCol>
-                <Navigation />
               </AnimatePresence>
+              <Navigation />
             </NavigationCell>
             <SecondGridWrapper>
               <SecondNavigationCell isMobile={isMobile}>
@@ -184,9 +183,9 @@ function Layout(props) {
                         exit="exit"
                         variants={animations.fadeAnimation}
                       >
-                        <SecondLogoWrapper>
+                        <Div>
                           <Image src="/&.svg" />
-                        </SecondLogoWrapper>
+                        </Div>
                       </AnimatedCol>
                     </AnimatePresence>
                     <AnimatePresence exitBeforeEnter={false}>

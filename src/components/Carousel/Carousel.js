@@ -43,9 +43,9 @@ const PageButton = styled.div`
   position: absolute;
   ${({ prev }) => prev && css`left: 10px;`}
   ${({ next }) => next && css`right: 10px;`}
-  top: 40%;
+  display: flex;
   z-index: 100;
-  opacity: 1;
+  opacity: 0.7;
 `;
 
 function Carousel({ data }) {
