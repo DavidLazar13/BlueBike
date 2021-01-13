@@ -17,5 +17,5 @@ deploy:
     - npm install
     - gatsby build
     - tar -czvf release.tar.gz public
-    - scp -P $SSH_PORT -i "$SSH_KEY" release.tar.gz $SSH_USER@$SSH_HOST:/development.balkantechnologies.com
+    - scp -P $SSH_PORT -i $SSH_KEY release.tar.gz $SSH_USER@$SSH_HOST:/development.balkantechnologies.com
     - ssh -p $SSH_PORT -i $SSH_KEY $SSH_USER@$SSH_HOST "cd development.balkantechnologies.com && tar -xvzf release.tar.gz && rm release.tar.gz"
