@@ -1,7 +1,13 @@
 image: node:12.20.1
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
 deploy:
   script:
-    - - mkdir /root/.ssh
+    - mkdir /root/.ssh
     - touch /root/.ssh/known_hosts
     - chmod 600 /root/.ssh
     - echo "[$SSH_HOST]:$SSH_PORT $SSH_FINGERPRINT" >> /root/.ssh/known_hosts
