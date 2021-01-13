@@ -1,7 +1,15 @@
 image: node:12.20.1
 deploy:
   script:
+    - - mkdir /root/.ssh
+    - touch /root/.ssh/known_hosts
+    - chmod 600 /root/.ssh
+    - echo "[$SSH_HOST]:$SSH_PORT $SSH_FINGERPRINT" >> /root/.ssh/known_hosts
+    - chmod 600 /root/.ssh/known_hosts
+    - chmod 400 $SSH_KEY
     - npm install -g gatsby-cli
     - npm install
     - gatsby build
-    - ls -la
+    - tar -czvf release.tar.gz public
+    - scp -P $SSH_PORT -i "$SSH_KEY" release.tar.gz $SSH_USER@$SSH_HOST:/development.balkantechnologies.com
+    - ssh -p $SSH_PORT -i $SSH_KEY $SSH_USER@$SSH_HOST "cd development.balkantechnologies.com && tar -xvzf release.tar.gz && rm release.tar.gz"
