@@ -10,7 +10,7 @@ deploy:
     - mkdir ~/.ssh
     - touch ~/.ssh/known_hosts
     - chmod 600 ~/.ssh
-    - echo $SSH_FINGERPRINT >> ~/.ssh/known_hosts
+    - echo "[$SSH_HOST]:$SSH_PORT $SSH_FINGERPRINT" >> /root/.ssh/known_hosts
     - chmod 600 ~/.ssh/known_hosts
     - chmod 400 $SSH_KEY
     - npm install -g gatsby-cli
