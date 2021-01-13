@@ -45,7 +45,11 @@ const PageButton = styled.div`
   ${({ next }) => next && css`right: 10px;`}
   display: flex;
   z-index: 100;
-  opacity: 0.7;
+  opacity: 0.3;
+  transition: 0.5s ease opacity;
+  &:hover {
+    opacity: 1;
+  };
 `;
 
 function Carousel({ data }) {
