@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import Img from 'gatsby-image';
 
 const Wrapper = styled.div`

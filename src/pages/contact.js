@@ -5,13 +5,12 @@ import { breakpoint } from 'styled-components-breakpoint';
 import GoogleMap from '../components/GoogleMap';
 
 const Wrapper = styled.div`
-  max-height: 100vh ;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0 0 0 40px;
   box-sizing: border-box;
+  padding: 0;
   ${breakpoint('desktop')`
   padding: 96px 0 48px 48px;
   `};
@@ -26,12 +25,14 @@ const Paragraph = styled.p`
   margin: 0;
   padding-top: 16px;
   padding-bottom: 16px;
+  padding-left: 40px;
   ${({ wide }) => wide && css`
     letter-spacing: 6px;
   `};
   ${breakpoint('desktop')`
     padding-top: 8px;
     padding-bottom: 8px;
+    padding-left: 0px;
   `};
 `;
 
@@ -53,7 +54,6 @@ function Contact({ data }) {
         <Paragraph>{contentfulContact.adress}</Paragraph>
         <Paragraph>{contentfulContact.eMail}</Paragraph>
         <Paragraph wide>{contentfulContact.phone}</Paragraph>
-
     </Wrapper>
   );
 }

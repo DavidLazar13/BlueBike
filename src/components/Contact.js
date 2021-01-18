@@ -11,10 +11,12 @@ const ContactItem = styled.p`
   letter-spacing: 6px;
   padding-top: 16px;
   padding-bottom: 16px;
+  padding-left: 40px;
   margin: 0;
   ${breakpoint('desktop')`
     padding-top: 8px;
     padding-bottom: 8px;
+    padding-left: 0;
   `};
 `;
 
@@ -22,14 +24,14 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: flex-end;
+  flex-wrap: wrap;
   box-sizing: border-box;
 `;
 
 const LabelWrapper = styled.div`
-  position: absolute;
-  top: 57%;
-  left: 12%;
+  padding-bottom: 68px;
   ${breakpoint('desktop')`
+    padding-bottom: 0;
     position: unset;
     top: unset;
     z-index: unset;
