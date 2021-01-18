@@ -129,13 +129,8 @@ const Image = styled.img`
 `;
 
 const Div = styled.div`
-//align-items: center;
-//justify-content: left;
-//display: flex;
-`;
-
-const SecondLogoWrapper = styled.div`
-  
+  display: block;
+  position: fixed;
 `;
 
 function Layout(props) {

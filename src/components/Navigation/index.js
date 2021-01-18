@@ -11,8 +11,8 @@ flex-direction: column;
 `;
 
 export const NavList = styled.ul`
-padding: 12px 0 0 0;
-margin: 0;
+  margin: 36px 0 0 0;
+  padding: 0;
 `;
 
 const NavItem = styled.li`

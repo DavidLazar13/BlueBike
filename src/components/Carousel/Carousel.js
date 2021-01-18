@@ -45,7 +45,7 @@ const PageButton = styled.div`
   ${({ next }) => next && css`right: 10px;`}
   display: flex;
   z-index: 100;
-  opacity: 0.3;
+  opacity: 0.7;
   transition: 0.5s ease opacity;
   &:hover {
     opacity: 1;

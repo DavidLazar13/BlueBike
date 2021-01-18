@@ -9,7 +9,7 @@ const BackgroundDiv = styled.div`
   height: 100%;
   background: linear-gradient(
           90deg,
-          white -1%,
+          white -1%, 
           ${({theme}) => theme.colors.background} 0%)
 ;
   background-repeat: no-repeat;
