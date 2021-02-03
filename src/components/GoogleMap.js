@@ -25,7 +25,6 @@ const defaultProps = {
 };
 
 function GoogleMap() {
-
   return (
     <MapWrapper>
       <GoogleMapReact
