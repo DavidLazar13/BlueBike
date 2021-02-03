@@ -44,6 +44,7 @@ const PageButton = styled.div`
   ${({ prev }) => prev && css`left: 10px;`}
   ${({ next }) => next && css`right: 10px;`}
   display: flex;
+  ${({ disableButton }) => disableButton && css`display: none;`}
   z-index: 100;
   opacity: 0.7;
   transition: 0.5s ease opacity;
@@ -58,6 +59,7 @@ function Carousel({ data }) {
   if (!gallery) {
     return null;
   }
+  const disableButton = gallery.length < 2;
   const imageIndex = wrap(0, gallery.length, page);
   const paginate = newDirection => {
     setPage([page + newDirection, newDirection]);
@@ -65,7 +67,7 @@ function Carousel({ data }) {
 
   return (
     <CarouselWrapper>
-      <PageButton prev onClick={() => paginate(-1)}>
+      <PageButton disableButton={disableButton} prev onClick={() => paginate(-1)}>
         <img src="/left.svg" alt="navigate-previous" />
       </PageButton>
       <AnimatePresence initial={false} custom={direction} exitBeforeEnter>
@@ -95,7 +97,7 @@ function Carousel({ data }) {
           <CarouselItem data={gallery[imageIndex]} />
         </AnimatedCarousel>
       </AnimatePresence>
-      <PageButton next onClick={() => paginate(1)}>
+      <PageButton disableButton={disableButton} next onClick={() => paginate(1)}>
         <img src="/right.svg" alt="navigate-next" />
       </PageButton>
     </CarouselWrapper>

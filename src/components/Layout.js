@@ -68,7 +68,7 @@ const SecondNavigationCell = styled(Col)`
   padding: 48px 0 42px 0;
   grid-area: col3;
   min-width: 115px;
-  ${({isMobile}) => isMobile && css`
+  ${({isContactActive}) => isContactActive && css`
     display: block;
     position: absolute;
     top: 24%;
@@ -140,7 +140,6 @@ function Layout(props) {
   const isContentActive = useMatch('/projects/:var') || useMatch('/contact/');
   const isBackgroundCollapsed =
       useMatch('/projects/') || useMatch('/contact/') || useMatch('/projects/:var');
-  const isMobile = useMatch('/contact/');
 
   return (
     <ThemeProvider theme={theme}>
@@ -167,7 +166,7 @@ function Layout(props) {
               <Navigation />
             </NavigationCell>
             <SecondGridWrapper>
-              <SecondNavigationCell isMobile={isMobile}>
+              <SecondNavigationCell isContactActive={isContactActive}>
                 {isProjectsActive && (
                   <>
                     <AnimatePresence exitBeforeEnter={false}>
