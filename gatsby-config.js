@@ -8,7 +8,15 @@ require('dotenv').config({
 });
 
 module.exports = {
-  /* Your site config here */
+/* Your site config here */
+  siteMetadata: {
+    title: 'BlueBike',
+    titleTemplate: 'BlueBike · Modern Buildings',
+    description:
+      'Modern Buildings for modern life',
+    url: 'BlueBike', // No trailing slash allowed!
+    image: '/thumbnail.png', // Path to your image you placed in the 'static' folder
+  },
   plugins: [
     {
       resolve: 'gatsby-source-contentful',
@@ -17,6 +25,7 @@ module.exports = {
         accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
       },
     },
-      'gatsby-plugin-styled-components',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-helmet',
   ],
 };

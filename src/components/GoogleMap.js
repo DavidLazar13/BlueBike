@@ -37,7 +37,7 @@ function GoogleMap() {
           lat={44.17}
           lng={28.66}
           projectTitle="Headquarters"
-          projectImage="../test-card.png"
+          projectImage="../thumbnail.png"
           projectAdressLink="https://g.page/theviewconstanta?share"
         />
       </GoogleMapReact>

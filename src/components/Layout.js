@@ -2,14 +2,15 @@ import React from 'react';
 import styled, { ThemeProvider, css } from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
+import { useMatch } from '@reach/router';
+import breakpoint from 'styled-components-breakpoint';
 import Navigation from './Navigation';
 import ProjectsNavigation from './ProjectsNavigation';
 import '../style.css';
 import { theme, animations } from '../theme';
-import ContactComponent from "./Contact";
-import breakpoint from 'styled-components-breakpoint';
-import { useMatch } from "@reach/router";
-import BackgroundComponent from "./Background";
+import ContactComponent from './Contact';
+import BackgroundComponent from './Background';
+import SEO from './SEO';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -68,7 +69,7 @@ const SecondNavigationCell = styled(Col)`
   padding: 48px 0 42px 0;
   grid-area: col3;
   min-width: 115px;
-  ${({isContactActive}) => isContactActive && css`
+  ${({ isContactActive }) => isContactActive && css`
     display: block;
     position: absolute;
     top: 24%;
@@ -101,7 +102,7 @@ const ProjectsCell = styled(Col)`
   right: 0%;
   width: 100%;
   height: 60%;
-  ${({isActive}) => isActive && css`
+  ${({ isActive }) => isActive && css`
     display: block;
   `};
   ${breakpoint('desktop')`
@@ -113,7 +114,6 @@ const ProjectsCell = styled(Col)`
     height: 100%;
   `};
 `;
-
 
 const AnimatedCol = styled(motion.div)`
   position: relative;
@@ -138,12 +138,12 @@ function Layout(props) {
   const isProjectsActive = useMatch('/projects/') || useMatch('/projects/:var');
   const isContactActive = useMatch('/contact');
   const isContentActive = useMatch('/projects/:var') || useMatch('/contact/');
-  const isBackgroundCollapsed =
-      useMatch('/projects/') || useMatch('/contact/') || useMatch('/projects/:var');
+  const isBackgroundCollapsed = useMatch('/projects/') || useMatch('/contact/') || useMatch('/projects/:var');
 
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
+        <SEO />
         <BackgroundComponent isBackgroundCollapsed={isBackgroundCollapsed}>
           <GridWrapper>
             {/* Main Nav Column */}
@@ -209,7 +209,7 @@ function Layout(props) {
                   </AnimatePresence>
                 )}
               </SecondNavigationCell>
-              <ProjectsCell isActive={isContentActive} >
+              <ProjectsCell isActive={isContentActive}>
                 <AnimatePresence exitBeforeEnter>
                   <ContentCol
                     key={location.pathname}
