@@ -65,11 +65,12 @@ text-decoration: none;
 `;
 
 const NAV_QUERY = graphql`
-query NAV_QUERY {
-  allContentfulProject {
+query MyQuery {
+  allContentfulProject(sort: { fields: [orderNumber], order: ASC }) {
     edges {
       node {
         id
+        orderNumber
         title
         slug
       }
