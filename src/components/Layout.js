@@ -76,6 +76,18 @@ const SecondNavigationCell = styled(Col)`
     right: 0%;
     width: 100%;
     height: 60%;
+    @media only screen
+    and (min-device-width: 320px)
+    and (max-device-width: 812px)  
+    and (orientation: landscape) {
+      padding: unset;
+      display: unset;
+      position: unset;
+      top: unset;
+      right: unset;
+      width: unset;
+      height: unset;
+    }
     ${breakpoint('desktop')`
       display: unset;
       position: unset;
@@ -85,6 +97,14 @@ const SecondNavigationCell = styled(Col)`
       height: unset;
     `};
   `};
+  @media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 812px)
+  and (orientation: landscape) {
+    height: unset;
+    width: 150px;
+    grid-area: unset;
+  }
   ${breakpoint('desktop')`
       padding: 96px 0 48px 0;
       height: unset;
@@ -105,6 +125,17 @@ const ProjectsCell = styled(Col)`
   ${({ isActive }) => isActive && css`
     display: block;
   `};
+  @media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 812px)
+  and (orientation: landscape) {
+    display: flex;
+    flex-direction: column;
+    grid-area: unset;
+    position: unset;
+    top: 0%;
+    height: 100%;
+  }
   ${breakpoint('desktop')`
     display: flex;
     flex-direction: column;

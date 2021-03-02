@@ -30,6 +30,16 @@ const Wrapper = styled.div`
 
 const LabelWrapper = styled.div`
   padding-bottom: 68px;
+  @media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 812px)  
+  and (orientation: landscape) {
+    padding-bottom: 0;
+    position: unset;
+    top: unset;
+    z-index: unset;
+    left: unset;
+  }
   ${breakpoint('desktop')`
     padding-bottom: 0;
     position: unset;
