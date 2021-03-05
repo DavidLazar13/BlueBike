@@ -26,7 +26,7 @@ const swipeConfidenceThreshold = 10000;
 const swipePower = (offset, velocity) => Math.abs(offset) * velocity;
 
 const AnimatedCarousel = styled(motion.div)`
-  height: 100%;
+  height: 100vh;
   width: 100%;
 `;
 
